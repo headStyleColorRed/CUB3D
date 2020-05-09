@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv)
 {
-	char *stringed_map;
+	printf("%s", read_map());
 
 	
 	return (0);
