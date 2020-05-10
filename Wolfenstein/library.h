@@ -16,7 +16,9 @@
 
 #include "libraries/get_next_line/get_next_line.h"
 #include "libraries/libft/libft.h"
+
 #include "headers/map_manager.h"
 #include "headers/errorManager.h"
+#include "headers/globals.h"
 
 #endif /* library_h */

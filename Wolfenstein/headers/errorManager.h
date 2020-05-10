@@ -11,4 +11,4 @@
 
 void	print_error(char *str);
 
-#endif /* errorManager_h */
+#endif 

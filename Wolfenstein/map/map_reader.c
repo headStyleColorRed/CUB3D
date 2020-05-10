@@ -8,8 +8,6 @@
 
 #include "../library.h"
 
-
-
 char *read_map(void)
 {
 	int fd;

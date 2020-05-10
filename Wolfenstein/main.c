@@ -11,7 +11,11 @@
 
 int main(int argc, char **argv)
 {
-	printf("%s", read_map());
+	char *raw_map;
+	
+	raw_map = read_map();
+	parse_resolution(raw_map);
+	
 
 	
 	return (0);
