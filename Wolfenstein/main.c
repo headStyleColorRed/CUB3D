@@ -12,9 +12,11 @@
 int main(int argc, char **argv)
 {
 	char *raw_map;
+	t_map map;
 	
 	raw_map = read_map();
-	parse_resolution(raw_map);
+	parse_resolution(raw_map, &map);
+	
 	
 
 	

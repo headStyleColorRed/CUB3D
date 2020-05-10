@@ -40,6 +40,6 @@ typedef struct	s_map
 char	*read_map(void);
 
 /*  M A P   P A R S E R  */
-void	parse_resolution(char *raw_map);
+void	parse_resolution(char *raw_map, t_map *map);
 
 #endif
