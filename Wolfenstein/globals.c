@@ -8,23 +8,24 @@
 
 #include "library.h"
 
-char	*map_textures(char *chosen_map)
+char	*map_textures(t_map_parser chosenMap)
 {
-	if (!ft_strncmp(chosen_map, "NORTH", 4))
+	
+	if(chosenMap == NORTH)
 		return "NO";
-	else if (!ft_strncmp(chosen_map, "SOUTH", 4))
+	else if (chosenMap == SOUTH)
 		return "SO";
-	else if (!ft_strncmp(chosen_map, "WEST", 4))
+	else if (chosenMap == WEST)
 		return "WE";
-	else if (!ft_strncmp(chosen_map, "EAST", 4))
+	else if (chosenMap == EAST)
 		return "EA";
-	else if (!ft_strncmp(chosen_map, "RESOLUTION", 4))
-		return "R";
-	else if (!ft_strncmp(chosen_map, "SPRITE", 4))
-		return "S";
-	else if (!ft_strncmp(chosen_map, "FLOOR", 4))
-		return "F";
-	else if (!ft_strncmp(chosen_map, "CEILING", 4))
-		return "C";
+	else if (chosenMap == RESOLUTION)
+		return "R ";
+	else if (chosenMap == SPRITE)
+		return "S ";
+	else if (chosenMap == FLOOR)
+		return "F ";
+	else if (chosenMap == CEILING)
+		return "C ";
 	return 0;
 }

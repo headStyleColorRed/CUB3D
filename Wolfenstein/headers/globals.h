@@ -9,5 +9,17 @@
 #ifndef globals_h
 #define globals_h
 
-char	*map_textures(char *chosen_map);
+typedef enum e_map_parser
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+	RESOLUTION,
+	SPRITE,
+	FLOOR,
+	CEILING
+}			t_map_parser;
+
+char	*map_textures(t_map_parser chosenMap);
 #endif 

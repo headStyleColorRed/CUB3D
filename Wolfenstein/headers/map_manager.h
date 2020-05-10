@@ -40,6 +40,18 @@ typedef struct	s_map
 char	*read_map(void);
 
 /*  M A P   P A R S E R  */
-void	parse_resolution(char *raw_map, t_map *map);
+char	*parse_character(char *raw_map, char *chosen_field);
+void	parse_cube_map(char *raw_map, t_map *map);
 
+/*  M A P   T E X T U R E	P A R S E R*/
+void	parse_north_texture(char *raw_map, t_map *map);
+void	parse_south_texture(char *raw_map, t_map *map);
+void	parse_east_texture(char *raw_map, t_map *map);
+void	parse_west_texture(char *raw_map, t_map *map);
+void	parse_sprite_texture(char *raw_map, t_map *map);
+
+/*  M A P   R E S T 	P A R S E R*/
+void	parse_resolution(char *raw_map, t_map *map);
+void	parse_floor_color(char *raw_map, t_map *map);
+void	parse_ceiling_color(char *raw_map, t_map *map);
 #endif

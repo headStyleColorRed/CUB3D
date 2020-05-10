@@ -32,17 +32,34 @@ char	*parse_character(char *raw_map, char *chosen_field)
 	
 }
 
-void	parse_resolution(char *raw_map, t_map *map)
+void initialize_map_values(t_map *map)
 {
-	char *resolutions;
-	char **splitted_resolutions;
-	
-	resolutions = parse_character(raw_map, map_textures("RESOLUTION"));
-	if (!resolutions)
-		print_error("Resolutions field not found.");
-	
-	splitted_resolutions = ft_split(resolutions, ' ');
-	map->resolution.width = ft_atoi(splitted_resolutions[1]);
-	map->resolution.length = ft_atoi(splitted_resolutions[2]);
-	
+	map->NO_texture = NULL;
+	map->SO_texture = NULL;
+	map->WE_texture = NULL;
+	map->EA_texture = NULL;
+	map->SP_texture = NULL;
+	map->resolution.length = 0;
+	map->resolution.width = 0;
+	map->floor_color.r_color = 0;
+	map->floor_color.g_color = 0;
+	map->floor_color.b_color = 0;
+	map->ceiling_color.r_color = 0;
+	map->ceiling_color.g_color = 0;
+	map->ceiling_color.b_color = 0;
+}
+
+
+
+void	parse_cube_map(char *raw_map, t_map *map)
+{
+	initialize_map_values(map);
+	parse_resolution(raw_map, map);
+	parse_north_texture(raw_map, map);
+	parse_south_texture(raw_map, map);
+	parse_west_texture(raw_map, map);
+	parse_east_texture(raw_map, map);
+	parse_sprite_texture(raw_map, map);
+	parse_floor_color(raw_map, map);
+	parse_ceiling_color(raw_map, map);
 }
