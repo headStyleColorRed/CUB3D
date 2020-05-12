@@ -21,4 +21,6 @@
 #include "headers/errorManager.h"
 #include "headers/globals.h"
 
+# define BUFF_SIZE 42
+
 #endif /* library_h */

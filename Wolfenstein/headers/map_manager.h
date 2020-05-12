@@ -29,10 +29,12 @@ typedef struct	s_map
 	char  			*WE_texture;
 	char  			*EA_texture;
 	char  			*SP_texture;
+	char			*map;
+	int				map_height;
+	int				map_width;
 	t_resolution 	resolution;
 	t_color			floor_color;
 	t_color			ceiling_color;
-	
 }				t_map;
 
 
@@ -54,4 +56,7 @@ void	parse_sprite_texture(char *raw_map, t_map *map);
 void	parse_resolution(char *raw_map, t_map *map);
 void	parse_floor_color(char *raw_map, t_map *map);
 void	parse_ceiling_color(char *raw_map, t_map *map);
+
+/*  M A P   M A T R I X */
+void parse_map(char *raw_map, t_map *map);
 #endif

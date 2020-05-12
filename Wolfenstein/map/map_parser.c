@@ -13,11 +13,6 @@
 			2. Copies in final_string the whole line until it reaches a new line character.
 			3. Returns either the cutted line or null if field not found.
  
-	parse_resolution() ->
-			1. Gets the raw string with the values we need
-			2. Splits the line in three and assignes the 2º and 3º field to
-				the width and length of the screen
- 
  */
 
 char	*parse_character(char *raw_map, char *chosen_field)
@@ -49,11 +44,10 @@ void initialize_map_values(t_map *map)
 	map->ceiling_color.b_color = 0;
 }
 
-
-
 void	parse_cube_map(char *raw_map, t_map *map)
 {
 	initialize_map_values(map);
+	
 	parse_resolution(raw_map, map);
 	parse_north_texture(raw_map, map);
 	parse_south_texture(raw_map, map);
@@ -62,4 +56,5 @@ void	parse_cube_map(char *raw_map, t_map *map)
 	parse_sprite_texture(raw_map, map);
 	parse_floor_color(raw_map, map);
 	parse_ceiling_color(raw_map, map);
+	parse_map(raw_map, map);
 }

@@ -18,7 +18,8 @@ typedef enum e_map_parser
 	RESOLUTION,
 	SPRITE,
 	FLOOR,
-	CEILING
+	CEILING,
+	MAP
 }			t_map_parser;
 
 char	*map_textures(t_map_parser chosenMap);
