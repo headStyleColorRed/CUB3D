@@ -45,18 +45,22 @@ char	*read_map(void);
 char	*parse_character(char *raw_map, char *chosen_field);
 void	parse_cube_map(char *raw_map, t_map *map);
 
-/*  M A P   T E X T U R E	P A R S E R*/
+/*  M A P   T E X T U R E	P A R S E R */
 void	parse_north_texture(char *raw_map, t_map *map);
 void	parse_south_texture(char *raw_map, t_map *map);
 void	parse_east_texture(char *raw_map, t_map *map);
 void	parse_west_texture(char *raw_map, t_map *map);
 void	parse_sprite_texture(char *raw_map, t_map *map);
 
-/*  M A P   R E S T 	P A R S E R*/
+/*  M A P   R E S T 	P A R S E R */
 void	parse_resolution(char *raw_map, t_map *map);
 void	parse_floor_color(char *raw_map, t_map *map);
 void	parse_ceiling_color(char *raw_map, t_map *map);
 
 /*  M A P   M A T R I X */
 void parse_map(char *raw_map, t_map *map);
+
+/*  M A P   C O N F O R M I N G */
+void	check_file_conformity(t_map *map);
+
 #endif

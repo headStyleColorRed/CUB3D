@@ -57,4 +57,5 @@ void	parse_cube_map(char *raw_map, t_map *map)
 	parse_floor_color(raw_map, map);
 	parse_ceiling_color(raw_map, map);
 	parse_map(raw_map, map);
+	
 }

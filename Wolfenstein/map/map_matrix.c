@@ -82,7 +82,7 @@ void	save_mapfile_in_map(char *raw_map, t_map *map)
 			while (line[i])
 				map->map[j++] = line[i++];
 			while (i++ < map->map_width)
-				map->map[j++] = '1';
+				map->map[j++] = '8';
 			map->map[j++] = '\n';
 		}
 		free(line);
@@ -98,7 +98,7 @@ void	replace_spaces_in_map(t_map *map)
 	i = 0;
 	while (map->map[i]) {
 		if (map->map[i] == ' ')
-			map->map[i] = '1';
+			map->map[i] = '8';
 		i++;
 	}
 }
