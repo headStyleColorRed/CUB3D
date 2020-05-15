@@ -67,6 +67,9 @@ void	file_processor(int argc, char **argv, t_map *map)
 		process_file(argv[argc - 1], map);
 	else {
 		while (i++ < argc - 1)
+		{
 			process_file(argv[i], map);
+			printf("%s\n\n", map->map);
+		}
 	}
 }

@@ -15,12 +15,6 @@ int main(int argc, char **argv)
 	t_map map;
 	
 	file_processor(argc, argv, &map);
-	
-	
-	
-	
 	printf("Todo ok!\n");
-	printf("%s\n\n", map.map);
-	
 	return (0);
 }
