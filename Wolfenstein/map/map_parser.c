@@ -8,10 +8,10 @@
 
 #include "../library.h"
 /*
-	parse_character() ->
-			1. Gets the begining of the string and stores the result in partial_string.
-			2. Copies in final_string the whole line until it reaches a new line character.
-			3. Returns either the cutted line or null if field not found.
+ parse_character() ->
+ 1. Gets the begining of the string and stores the result in partial_string.
+ 2. Copies in final_string the whole line until it reaches a new line character.
+ 3. Returns either the cutted line or null if field not found.
  
  */
 
@@ -44,6 +44,37 @@ void initialize_map_values(t_map *map)
 	map->ceiling_color.b_color = 0;
 }
 
+int map_has_spaces(char *raw_map, t_map *map)
+{
+	int i;
+	int		fd;
+	int		spaces;
+	char	*line;
+	
+	fd = open(map->map_file, O_RDONLY);
+	i = 0;
+	spaces = 0;
+	while (get_next_line(fd, &line) == 1)
+	{
+		if (is_map_beggining(line))
+		{
+			i = 0;
+			while (line[i])
+			{
+				if (ft_isdigit(line[i]) && line[i + 1] == ' ')
+					spaces++;
+				i++;
+			}
+				
+		}
+		free(line);
+	}
+	close(fd);
+	if (spaces > 5)
+		return (1);
+	return (0);
+}
+
 void	parse_cube_map(char *raw_map, t_map *map)
 {
 	initialize_map_values(map);
@@ -56,6 +87,10 @@ void	parse_cube_map(char *raw_map, t_map *map)
 	parse_sprite_texture(raw_map, map);
 	parse_floor_color(raw_map, map);
 	parse_ceiling_color(raw_map, map);
-	parse_map(raw_map, map);
+	
+	if (map_has_spaces(raw_map, map))
+		parse_spaced_map(raw_map, map);
+	else
+		parse_map(raw_map, map);
 	
 }

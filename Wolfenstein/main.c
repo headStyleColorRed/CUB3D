@@ -15,15 +15,12 @@ int main(int argc, char **argv)
 	
 	i = 0;
 	if (argc == 1)
-		process_file("map0.cub");
+		process_file("map2.cub");
 	if (argc == 2)
 		process_file(argv[argc - 1]);
 	else {
 		while (i++ < argc - 1)
 			process_file(argv[i]);
 	}
-	
-	
-
 	return (0);
 }
