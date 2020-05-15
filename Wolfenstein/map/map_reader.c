@@ -32,10 +32,22 @@ char *read_map(t_map *raw_map)
 	return (map);
 }
 
+void	check_map_is_dot_cub(char *map_file)
+{
+	int i;
+	
+	i = ft_strlen(map_file);
+	if (map_file[i - 1] != 'b' &&
+		map_file[i - 2] != 'u' &&
+		map_file[i - 3] != 'c')
+		print_error("File is not .cub");
+}
+
 void	process_file(char *map_file, t_map *map)
 {
 	char *raw_map;
 	
+	check_map_is_dot_cub(map_file);
 	map->map_file = map_file;
 	
 	raw_map = read_map(map);
