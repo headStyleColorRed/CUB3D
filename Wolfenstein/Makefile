@@ -13,29 +13,47 @@ SRCS			=	map/map_conforming.c \
 					libraries/get_next_line/get_next_line.c
 OBJS			= $(SRCS:.c=.o)
 
-CC				= gcc
-RM				= rm -f 
-CFLAGS			= -Wall -Wextra -Werror
+NAME	= cub3D
 
-NAME			= cub3D
+GCC		= gcc
 
-all:			$(NAME)
+FLAGS	= -Wall -Wextra -Werror
 
-$(NAME):		$(OBJS)
+INCLUDE	= -I minilibx
+
+MLX_DIR		=	minilibx_opengl
+
+
+
+all:	$(NAME)
+
+.PHONY:	clean fclean re bonus bench bclean
+
+$(NAME):	$(OBJS)
 				@echo "\033[0;31m[Remove last version...]"
 				@rm -rf Cub3D
+				@echo "\033[0;35m[minilib compilation...]"
+				$(MAKE) -C minilibx_opengl
 				@echo "\033[0;36m[Libft compilation...]"
 				$(MAKE) -C libraries/libft
 				@echo "\033[0;33m[cub3D compilation...]"
-				gcc  ./libraries/libft/libft.a  ${CFLAGS} -o ${NAME} ${OBJS} 
+				gcc ./libraries/libft/libft.a $(FLAGS) -o $(NAME) $(OBJS)  -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 				@echo "\033[0;31m[Deleting Objects...]"
 				$(RM) *.o map/*.o
 				@echo "\033[1;32m[* * * * * * * * * * * * * * * * * * * * * * *]"
 				@echo "\033[1;32m[ C O M P I L E D  	S U C C E S F U L L Y]"
 				@echo "\033[1;32m[* * * * * * * * * * * * * * * * * * * * * * *]"
+				@./cub3D
+clean:
+	rm -f $(OBJS)
 
+fclean: clean
+	rm -f $(NAME)
 
-fclean:			clean
-				$(RM) *.o map/*.o
+re: fclean all
 
-re:				fclean $(NAME)
+%.o: %.c
+	$(GCC) $(INCLUDE) -c $<  -o $(<:.c=.o)
+
+run: all
+	@./cub3d.out

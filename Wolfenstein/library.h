@@ -16,6 +16,7 @@
 
 #include "libraries/get_next_line/get_next_line.h"
 #include "libraries/libft/libft.h"
+#include "minilibx_opengl/mlx.h"
 
 #include "headers/map_manager.h"
 #include "headers/errorManager.h"
