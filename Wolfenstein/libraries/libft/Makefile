@@ -63,6 +63,7 @@ $(NAME): $(OBJ)
 	@gcc -c $(FLAG) $(OPTION) $(SRC)
 	@ar -rcv $(NAME) $(OBJ)
 	@ranlib $(NAME)
+	$(RM) $(OBJ)
 
 clean:
 	$(RM) $(OBJ)
