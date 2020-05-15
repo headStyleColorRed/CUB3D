@@ -9,12 +9,14 @@
 #include <stdio.h>
 #include "library.h"
 
-
 int main(int argc, char **argv)
 {
 	t_map map;
+	t_window	window;
 	
 	file_processor(argc, argv, &map);
+	start_game(&map, &window);
+
 	printf("Todo ok!\n");
 	return (0);
 }

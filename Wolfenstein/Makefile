@@ -7,6 +7,7 @@ SRCS			=	map/map_conforming.c \
 					map/map_matrix.c \
 					map/map_rest_parser.c \
 					map/map_parser.c \
+					engine/game_engine.c \
 					errors/errorManager.c \
 					globals.c \
 					main.c \

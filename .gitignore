@@ -36,3 +36,4 @@ xcuserdata/
 *.o
 *.a
 Wolfenstein/cub3D
+*.json
