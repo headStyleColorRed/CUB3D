@@ -44,7 +44,7 @@ void initialize_map_values(t_map *map)
 	map->ceiling_color.b_color = 0;
 }
 
-int map_has_spaces(char *raw_map, t_map *map)
+int map_has_spaces(t_map *map)
 {
 	int i;
 	int		fd;
@@ -88,9 +88,9 @@ void	parse_cube_map(char *raw_map, t_map *map)
 	parse_floor_color(raw_map, map);
 	parse_ceiling_color(raw_map, map);
 	
-	if (map_has_spaces(raw_map, map))
-		parse_spaced_map(raw_map, map);
+	if (map_has_spaces(map))
+		parse_spaced_map(map);
 	else
-		parse_map(raw_map, map);
+		parse_map(map);
 	
 }

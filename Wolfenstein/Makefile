@@ -15,6 +15,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -f 
+CFLAGS			= -Wall -Wextra -Werror
 
 NAME			= cub3D
 
@@ -26,7 +27,7 @@ $(NAME):		$(OBJS)
 				@echo "\033[0;36m[Libft compilation...]"
 				$(MAKE) -C libraries/libft
 				@echo "\033[0;33m[cub3D compilation...]"
-				gcc  ./libraries/libft/libft.a -o ${NAME} ${OBJS} 
+				gcc  ./libraries/libft/libft.a  ${CFLAGS} -o ${NAME} ${OBJS} 
 				@echo "\033[0;31m[Deleting Objects...]"
 				$(RM) *.o map/*.o
 				@echo "\033[1;32m[* * * * * * * * * * * * * * * * * * * * * * *]"
@@ -38,5 +39,3 @@ fclean:			clean
 				$(RM) *.o map/*.o
 
 re:				fclean $(NAME)
-
-.PHONY:			all clean fclean re

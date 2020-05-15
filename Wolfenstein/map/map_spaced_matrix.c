@@ -20,7 +20,7 @@ int		is_spaced_map_beggining(char *line)
 	return 0;
 }
 
-void	get_spaced_map_max_height(char *raw_map, t_map *map)
+void	get_spaced_map_max_height(t_map *map)
 {
 	int		fd;
 	int		i;
@@ -41,7 +41,7 @@ void	get_spaced_map_max_height(char *raw_map, t_map *map)
 	map->map_height = i;
 }
 
-void	get_spaced_map_max_widht(char *raw_map, t_map *map)
+void	get_spaced_map_max_widht(t_map *map)
 {
 	int		fd;
 	int		i;
@@ -71,7 +71,7 @@ void	get_spaced_map_max_widht(char *raw_map, t_map *map)
 	map->map_width = max_width;
 }
 
-void	save_mapfile_in_spaced_map(char *raw_map, t_map *map)
+void	save_mapfile_in_spaced_map(t_map *map)
 {
 	int		fd;
 	int		i;
@@ -113,13 +113,13 @@ void	replace_spaces_in_spaced_map(t_map *map)
 	}
 }
 
-void	parse_spaced_map(char *raw_map, t_map *map)
+void	parse_spaced_map(t_map *map)
 {
-	get_spaced_map_max_height(raw_map, map);
-	get_spaced_map_max_widht(raw_map, map);
+	get_spaced_map_max_height(map);
+	get_spaced_map_max_widht(map);
 	
 	if (!(map->map = (char*)malloc(sizeof(*map) * (map->map_height * map->map_width))))
 		print_error("Map parsing allocation gone wrong.");
 	
-	save_mapfile_in_spaced_map(raw_map, map);
+	save_mapfile_in_spaced_map(map);
 }

@@ -61,11 +61,11 @@ void	parse_floor_color(char *raw_map, t_map *map);
 void	parse_ceiling_color(char *raw_map, t_map *map);
 
 /*  M A P   M A T R I X */
-void 	parse_map(char *raw_map, t_map *map);
+void	parse_map(t_map *map);
 int		is_map_beggining(char *line);
 
 /*  M A P   S P A C E D   M A T R I X */
-void	parse_spaced_map(char *raw_map, t_map *map);
+void	parse_spaced_map(t_map *map);
 
 /*  M A P   C O N F O R M I N G */
 void	check_file_conformity(t_map *map);
