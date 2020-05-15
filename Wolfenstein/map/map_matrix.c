@@ -47,20 +47,24 @@ void	get_map_max_widht(char *raw_map, t_map *map)
 	int		i;
 	int		max_width;
 	char	*line;
+	t_bool	map_has_begun;
 	
 	fd = open("map0.cub", O_RDONLY);
 	max_width = 0;
+	map_has_begun = ft_false;
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (is_map_beggining(line))
 		{
+			map_has_begun = ft_true;
 			i = 0;
 			while (line[i])
 				i++;
 			if (i > max_width)
 				max_width = i;
-		}
-			
+		} else if (map_has_begun == ft_true)
+			print_error("Map has a rotten line");
+		
 		free(line);
 	}
 	close(fd);
@@ -115,6 +119,6 @@ void	parse_map(char *raw_map, t_map *map)
 	
 	save_mapfile_in_map(raw_map, map);
 	replace_spaces_in_map(map);
-	printf("%s", map->map);
+	//printf("%s", map->map);
 
 }

@@ -22,5 +22,11 @@ typedef enum e_map_parser
 	MAP
 }			t_map_parser;
 
+typedef enum e_bool
+{
+	ft_false,
+	ft_true
+}			t_bool;
+
 char	*map_textures(t_map_parser chosenMap);
 #endif 
