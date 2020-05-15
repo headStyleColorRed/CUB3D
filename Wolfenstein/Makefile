@@ -9,6 +9,7 @@ SRCS			=	map/map_conforming.c \
 					map/map_parser.c \
 					engine/game_engine.c \
 					errors/errorManager.c \
+					game/game.c \
 					globals.c \
 					main.c \
 					libraries/get_next_line/get_next_line.c
@@ -40,7 +41,7 @@ $(NAME):	$(OBJS)
 				@echo "\033[0;33m[cub3D compilation...]"
 				gcc ./libraries/libft/libft.a $(FLAGS) -o $(NAME) $(OBJS)  -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 				@echo "\033[0;31m[Deleting Objects...]"
-				$(RM) *.o map/*.o
+				$(RM) *.o map/*.o engine/*.o game/*.o
 				@echo "\033[1;32m[* * * * * * * * * * * * * * * * * * * * * * *]"
 				@echo "\033[1;32m[ C O M P I L E D  	S U C C E S F U L L Y]"
 				@echo "\033[1;32m[* * * * * * * * * * * * * * * * * * * * * * *]"
