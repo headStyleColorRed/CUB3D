@@ -41,7 +41,8 @@ typedef struct	s_map
 
 /*  M A P   R E A D E R */
 char 	*read_map(t_map *raw_map);
-void	process_file(char *map_file);
+void	process_file(char *map_file, t_map *map);
+void	file_processor(int argc, char **argv, t_map *map);
 
 /*  M A P   P A R S E R  */
 char	*parse_character(char *raw_map, char *chosen_field);

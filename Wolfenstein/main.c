@@ -9,18 +9,18 @@
 #include <stdio.h>
 #include "library.h"
 
+
 int main(int argc, char **argv)
 {
-	int i;
+	t_map map;
 	
-	i = 0;
-	if (argc == 1)
-		process_file("map2.cub");
-	if (argc == 2)
-		process_file(argv[argc - 1]);
-	else {
-		while (i++ < argc - 1)
-			process_file(argv[i]);
-	}
+	file_processor(argc, argv, &map);
+	
+	
+	
+	
+	printf("Todo ok!\n");
+	printf("%s\n\n", map.map);
+	
 	return (0);
 }

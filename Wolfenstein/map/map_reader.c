@@ -32,17 +32,29 @@ char *read_map(t_map *raw_map)
 	return (map);
 }
 
-void	process_file(char *map_file)
+void	process_file(char *map_file, t_map *map)
 {
 	char *raw_map;
-	t_map map;
 	
-	map.map_file = map_file;
+	map->map_file = map_file;
 	
-	raw_map = read_map(&map);
+	raw_map = read_map(map);
 	
-	parse_cube_map(raw_map, &map);
-	check_file_conformity(&map);
-	printf("Todo ok!\n");
-	printf("%s\n\n", map.map);
+	parse_cube_map(raw_map, map);
+	check_file_conformity(map);
+}
+
+void	file_processor(int argc, char **argv, t_map *map)
+{
+	int i;
+	
+	i = 0;
+	if (argc == 1)
+		process_file("map2.cub", map);
+	if (argc == 2)
+		process_file(argv[argc - 1], map);
+	else {
+		while (i++ < argc - 1)
+			process_file(argv[i], map);
+	}
 }
