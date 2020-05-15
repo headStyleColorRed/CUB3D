@@ -48,7 +48,9 @@ SRC = ft_memset.c \
 	  ft_putchar_fd.c \
 	  ft_putstr_fd.c \
 	  ft_putendl_fd.c \
+	  ft_check_if_character.c \
 	  ft_putstr.c \
+	  ft_check_for_characters.c \
 	  ft_putnbr_fd.c \
 
 OBJ = $(SRC:%.c=%.o)

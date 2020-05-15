@@ -55,5 +55,7 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 void				ft_putstr(char *str);
+int					ft_check_for_characters(char *str, char *characters);
+int					ft_check_if_character(char str, char *characters);
 
 #endif

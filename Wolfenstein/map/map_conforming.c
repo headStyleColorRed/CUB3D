@@ -20,57 +20,32 @@ void	check_resolution_conformity(t_map *map)
 		print_error("Either one of the resolutions was 0");
 }
 
-void	check_map_right_left_conformity(t_map *map)
+int		check_map_player_position(t_map *map)
 {
 	int		i;
-	char	*error_string;
 	
 	i = 0;
-	error_string = "Map was missing a right/left 1";
-	if (map->map[i] != '1')
-		print_error(error_string);
-	while(map->map[i++])
+	while(map->map[i])
 	{
-		if (map->map[i] == '-' && map->map[i-1] != '1')
-			print_error(error_string);
-		if (map->map[i] == '-' && map->map[i+1] != '1')
-			print_error(error_string);
+		if (ft_check_if_character(map->map[i], "NSWE"))
+			return (1);
+		i++;
 	}
-	
+	print_error("No player position found");
+	return (0);
 }
 
-int		check_next_line(int i, t_map *map)
-{
-	int position_in_next_line;
-	
-	position_in_next_line = map->map[i + map->map_width + 1];
-	if (position_in_next_line == '8' && (i + map->map_width + 1) < ft_strlen(map->map))
-		check_next_line(i + map->map_width + 1, map);
-	
-	return (1);
-}
-
-void	check_map_top_bottom_conformity(t_map *map)
+void	check_for_forbidden_characters(t_map *map)
 {
 	int		i;
-	int		j;
-	char	*error_string;
 	
 	i = 0;
-	j = 0;
-	error_string = "Map was missing a top/bottom 1";
-	while(map->map[i++] != '\n')
+	while(map->map[i])
 	{
-		if (map->map[i] != '1' && map->map[i] != '8' )
-			print_error(error_string);
-		
-		if (map->map[i] != '1')
-		{
-			if (!check_next_line(i, map))
-				print_error(error_string);
-		}
+		if (!ft_check_if_character(map->map[i], "NSWE0128\n"))
+			print_error("Extraneus character in map");
+		i++;
 	}
-	
 }
 
 void	check_file_conformity(t_map *map)
@@ -78,6 +53,9 @@ void	check_file_conformity(t_map *map)
 	check_texture_conformity(map);
 	check_resolution_conformity(map);
 	check_map_right_left_conformity(map);
-	check_map_top_bottom_conformity(map);
+	check_map_top_conformity(map);
+	check_map_bottom_conformity(map);
+	check_map_player_position(map);
+	check_for_forbidden_characters(map);
 	
 }

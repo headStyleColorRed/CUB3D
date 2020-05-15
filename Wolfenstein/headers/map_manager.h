@@ -63,4 +63,9 @@ void parse_map(char *raw_map, t_map *map);
 /*  M A P   C O N F O R M I N G */
 void	check_file_conformity(t_map *map);
 
+
+/*  M A P   C O N F O R M I N G	   M A P */
+void	check_map_right_left_conformity(t_map *map);
+void	check_map_top_conformity(t_map *map);
+void	check_map_bottom_conformity(t_map *map);
 #endif

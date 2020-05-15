@@ -11,9 +11,11 @@
 int		is_map_beggining(char *line)
 {
 	char *trimmed;
+	char *secondTrimmed;
 	
 	trimmed = ft_strtrim(line, " ");
-	if (trimmed[0] == '1')
+	secondTrimmed = ft_strtrim(trimmed, "0");
+	if (secondTrimmed[0] == '1')
 		return 1;
 	return 0;
 }
