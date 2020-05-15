@@ -30,6 +30,7 @@ typedef struct	s_map
 	char  			*EA_texture;
 	char  			*SP_texture;
 	char			*map;
+	char			*map_file;
 	int				map_height;
 	int				map_width;
 	t_resolution 	resolution;
@@ -39,7 +40,8 @@ typedef struct	s_map
 
 
 /*  M A P   R E A D E R */
-char	*read_map(void);
+char 	*read_map(t_map *raw_map);
+void	process_file(char *map_file);
 
 /*  M A P   P A R S E R  */
 char	*parse_character(char *raw_map, char *chosen_field);

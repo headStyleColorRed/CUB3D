@@ -27,7 +27,7 @@ void	get_map_max_height(char *raw_map, t_map *map)
 	int		j;
 	char	*line;
 	
-	fd = open("map0.cub", O_RDONLY);
+	fd = open(map->map_file, O_RDONLY);
 	i = 0;
 	j = 0;
 	while (get_next_line(fd, &line) == 1)
@@ -49,7 +49,7 @@ void	get_map_max_widht(char *raw_map, t_map *map)
 	char	*line;
 	t_bool	map_has_begun;
 	
-	fd = open("map0.cub", O_RDONLY);
+	fd = open(map->map_file, O_RDONLY);
 	max_width = 0;
 	map_has_begun = ft_false;
 	while (get_next_line(fd, &line) == 1)
@@ -78,7 +78,7 @@ void	save_mapfile_in_map(char *raw_map, t_map *map)
 	int		j;
 	char	*line;
 	
-	fd = open("map0.cub", O_RDONLY);
+	fd = open(map->map_file, O_RDONLY);
 	j = 0;
 	while (get_next_line(fd, &line) == 1)
 	{

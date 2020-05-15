@@ -11,12 +11,17 @@
 
 int main(int argc, char **argv)
 {
-	char *raw_map;
-	t_map map;
+	int i;
 	
-	raw_map = read_map();
-	parse_cube_map(raw_map, &map);
-	check_file_conformity(&map);
+	i = 0;
+	if (argc == 1)
+		process_file("map0.cub");
+	if (argc == 2)
+		process_file(argv[argc - 1]);
+	else {
+		while (i++ < argc - 1)
+			process_file(argv[i]);
+	}
 	
 	
 

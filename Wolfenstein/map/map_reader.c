@@ -8,7 +8,7 @@
 
 #include "../library.h"
 
-char *read_map(void)
+char *read_map(t_map *raw_map)
 {
 	int fd;
 	int i;
@@ -16,7 +16,7 @@ char *read_map(void)
 	char *map;
 
 	int ft;
-	ft = open("map0.cub", O_RDONLY);
+	ft = open(raw_map->map_file , O_RDONLY);
 	if (ft == -1)
 	{
 		print_error("Not found .cub file");
@@ -30,4 +30,19 @@ char *read_map(void)
 		map[i++] = buffer;
 	close(fd);
 	return (map);
+}
+
+void	process_file(char *map_file)
+{
+	char *raw_map;
+	t_map map;
+	
+	map.map_file = map_file;
+	
+	raw_map = read_map(&map);
+	
+	parse_cube_map(raw_map, &map);
+	check_file_conformity(&map);
+	printf("Todo ok!\n");
+	printf("%s\n\n", map.map);
 }
