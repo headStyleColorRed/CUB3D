@@ -62,7 +62,7 @@ void	file_processor(int argc, char **argv, t_map *map)
 	
 	i = 0;
 	if (argc == 1)
-		process_file("resources/map2.cub", map);
+		process_file("Wolfenstein/resources/map2.cub", map);
 	if (argc == 2)
 		process_file(argv[argc - 1], map);
 	else {
