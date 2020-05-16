@@ -14,9 +14,17 @@ int main(int argc, char **argv)
 	t_map	map;
 	t_game	game;
 	
-	file_processor(argc, argv, &map);
-	start_game(&map, &game);
+	// file_processor(argc, argv, &map);
+	// start_game(&map, &game);
+    int a;
+    int b;
+    int c;
 
-	printf("Todo ok!\n");
+    a = 5;
+    b = 4;
+    c = a + b;
+
+	printf("The sum is %d\n", c);
+	
 	return (0);
 }
