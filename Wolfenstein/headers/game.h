@@ -22,8 +22,8 @@ typedef	struct		s_window
 
 typedef	struct		s_coordinate
 {
-	int			*x;
-	int			*y;
+	int				x;
+	int				y;
 }					t_coordinate;
 
 
