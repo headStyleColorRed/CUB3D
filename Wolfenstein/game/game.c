@@ -6,7 +6,14 @@ int     pressed_key(int keycode, t_game *game)
     (void) game;
     
     if (keycode == KEY_W)
-        printf("haleluya");
+        game->player_position.y -= 5;
+    else if (keycode == KEY_S)
+        game->player_position.y += 5;
+    else if (keycode == KEY_D)
+        game->player_position.x += 5;
+    else if (keycode == KEY_A)
+        game->player_position.x -= 5;
+        
     return (0);
 }
 
@@ -25,7 +32,21 @@ void    set_up_window(t_map *map, t_window *window)
 
 int    run_game(t_game *game)
 {
-    mlx_pixel_put(game->window.ptr, game->window.win, 0, 0, 18411339);
+    int i;
+    int j;
+
+    i = 0;
+    j = 0;
+    while (i < 10)
+    {
+        j = 0;
+        while (j < 10)
+        {
+            mlx_pixel_put(game->window.ptr, game->window.win, game->player_position.x + i, game->player_position.y + j++, 1921280);
+        }
+        i++;
+    }
+    
     
     return (0);
 }
