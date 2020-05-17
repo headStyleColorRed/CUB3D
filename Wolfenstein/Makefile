@@ -22,7 +22,7 @@ GCC = gcc
 
 INCLUDE	= -I minilibx
 
-MLX_DIR		=	minilibx_opengl
+MLX_DIR		=	libraries/minilibx_opengl
 
 all:	$(NAME)
 
@@ -30,7 +30,7 @@ $(NAME):	$(OBJS)
 				@echo "\033[0;31m[Remove last version...]"
 			@rm -rf Cub3D
 				@echo "\033[0;35m[minilib compilation...]"
-			$(MAKE) -C minilibx_opengl
+			$(MAKE) -C libraries/minilibx_opengl
 				@echo "\033[0;36m[Libft compilation...]"
 			$(MAKE) -C libraries/libft
 				@echo "\033[0;33m[cub3D compilation...]"

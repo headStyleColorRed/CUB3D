@@ -37,6 +37,8 @@ int    run_game(t_game *game)
 
     i = 0;
     j = 0;
+
+    mlx_clear_window(game->window.ptr, game->window.win);
     while (i < 10)
     {
         j = 0;
