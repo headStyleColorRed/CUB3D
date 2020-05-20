@@ -31,10 +31,10 @@ typedef	struct		s_game
 {
     t_window    	window;
 	t_coordinate	player_position;
+	t_map			*map;
 }					t_game;
 
 
-/*  G A M E   E N G I N E */
 void    start_game(t_map *map, t_game *t_game);
 
 #endif 

@@ -35,5 +35,5 @@ xcuserdata/
 #  #  #  #  #  #  #  #  #  #  #  #  #
 *.o
 *.a
-Wolfenstein/cub3D
+#Wolfenstein/cub3D
 *.json

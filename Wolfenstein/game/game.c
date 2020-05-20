@@ -3,16 +3,13 @@
 
 int     pressed_key(int keycode, t_game *game)
 {
-    (void) game;
+    // check_for_movement()
     
-    if (keycode == KEY_W)
-        game->player_position.y -= 5;
-    else if (keycode == KEY_S)
-        game->player_position.y += 5;
-    else if (keycode == KEY_D)
-        game->player_position.x += 5;
-    else if (keycode == KEY_A)
-        game->player_position.x -= 5;
+    if (keycode == KEY_W ||
+        keycode == KEY_S ||
+        keycode == KEY_D ||
+        keycode == KEY_A )
+        check_for_movement(game, keycode);
         
     return (0);
 }
@@ -32,23 +29,10 @@ void    set_up_window(t_map *map, t_window *window)
 
 int    run_game(t_game *game)
 {
-    int i;
-    int j;
-
-    i = 0;
-    j = 0;
-
-    mlx_clear_window(game->window.ptr, game->window.win);
-    while (i < 10)
-    {
-        j = 0;
-        while (j < 10)
-        {
-            mlx_pixel_put(game->window.ptr, game->window.win, game->player_position.x + i, game->player_position.y + j++, 1921280);
-        }
-        i++;
-    }
-    
+    (void)game;
+     apply_raycast(game);
+    // draw_sprites();
+    // show_image();
     
     return (0);
 }
@@ -57,6 +41,7 @@ int    run_game(t_game *game)
 void    start_game(t_map *map, t_game *game)
 {
     set_up_window(map, &game->window);
+	game->map = map;
     add_key_hooks(game);
 
     
