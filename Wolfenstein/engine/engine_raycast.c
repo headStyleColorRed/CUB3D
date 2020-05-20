@@ -7,7 +7,6 @@ void apply_raycast(t_game *game)
 
     i = 0;
     j = 0;
-	
     while (i < game->map->resolution.width)
     {
         j = 0;
