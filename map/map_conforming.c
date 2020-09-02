@@ -16,7 +16,7 @@ void	check_texture_conformity(t_map *map)
 
 void	check_resolution_conformity(t_map *map)
 {
-	if (map->resolution.length <= 0 || map->resolution.width <= 0)
+	if (map->resolution.height <= 0 || map->resolution.width <= 0)
 		print_error("Either one of the resolutions was 0");
 }
 

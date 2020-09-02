@@ -19,7 +19,7 @@ typedef struct	s_color
 typedef struct s_resolution
 {
 	int width;
-	int length;
+	int height;
 }				t_resolution;
 
 typedef struct	s_map

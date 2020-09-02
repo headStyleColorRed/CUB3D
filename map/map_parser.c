@@ -34,7 +34,7 @@ void initialize_map_values(t_map *map)
 	map->WE_texture = NULL;
 	map->EA_texture = NULL;
 	map->SP_texture = NULL;
-	map->resolution.length = 0;
+	map->resolution.height = 0;
 	map->resolution.width = 0;
 	map->floor_color.r_color = 0;
 	map->floor_color.g_color = 0;
