@@ -1,12 +1,10 @@
 #include "../library.h"
 
-void draw_pixel(t_game *game, t_coordinate *pos, int color)
+void draw_pixel(t_game *game, t_coordinate *pix_pos, int color)
 {
-	if (pos->x >= 0 && pos->x < game->map->resolution.width && pos->y >= 0 && pos->y < game->map->resolution.height)
-	{
-
-		*(int *)(game->window.ptr + (4 * (int)game->map->resolution.width * (int)pos->y) + ((int)pos->x * 4)) = color;
-	}
+	(void)game;
+	(void)pix_pos;
+	(void)color;
 }
 
 int draw_vertical_line(t_game *game, t_coordinate *start, int height, int color)
@@ -26,25 +24,13 @@ int draw_vertical_line(t_game *game, t_coordinate *start, int height, int color)
 	while (i < height && (j = start->y + i) < limit)
 	{
 		pos.y = j;
-		draw_pixel(game, &pos, color)
+		draw_pixel(game, &pos, color);
 	}
-	
-
-
+	return (0);
 }
 
 void apply_raycast(t_game *game)
 {
-    // while (i < game->map->resolution.width)
-    // {
-    //     j = 0;
-    //     while (j < game->map->resolution.height)
-    //     {
-    //         mlx_pixel_put(game->window.ptr, game->window.win, i, j++, 1921280);
-    //     }
-    //     i++;
-    // }
-
 	int     bpp;
 	int     size_line;
 	int     endian;
@@ -56,8 +42,22 @@ void apply_raycast(t_game *game)
 
 	my_image_data = mlx_get_data_addr(image_pointer, &bpp, &size_line, &endian);
 
-
 	mlx_put_image_to_window(game->window.ptr, game->window.win, my_image_data, 0, 0);
+
+	// char **myMatrix;
+
+
     
 
 }
+
+// void	fill_my_matrix(char **myMatrix)
+// {	
+// 	myMatrix = (int)ft_calloc(5, sizeof(int));
+	
+// 	for(int i = 0; i < 5; i++) {
+// 		for(int j = 0; j < 4; j++) {
+// 			printf("[%d][%d]\n", i, j);
+// 		}
+// 	}
+// }
