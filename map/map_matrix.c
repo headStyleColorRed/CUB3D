@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 12:31:47 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/05 12:31:50 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/05 12:46:26 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,4 @@ void	parse_map(t_map *map)
 	
 	save_mapfile_in_map(map);
 	replace_spaces_in_map(map);
-	//printf("%s", map->map);
-
 }

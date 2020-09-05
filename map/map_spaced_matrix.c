@@ -66,9 +66,7 @@ void	get_spaced_map_max_widht(t_map *map)
 				i++;
 			}
 			if (symbols > max_width)
-			{
 				max_width = symbols;
-			}
 			symbols = 0;
 		} else if (map_has_begun == ft_true)
 			print_error("Map has a rotten line");

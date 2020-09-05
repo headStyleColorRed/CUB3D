@@ -29,21 +29,21 @@ int draw_vertical_line(t_game *game, t_coordinate *start, int height, int color)
 	return (0);
 }
 
-// void print_matrix(char **matrix, int height, int width)
-// {
-// 	int i = 0;
-// 	int j = 0;
+void print_matrix(char **matrix, int height, int width)
+{
+	int i = 0;
+	int j = 0;
 
-// 	while (i < height) {
-// 		j = 0;
-// 		while (j < width) {
-// 			printf("%c ", matrix[i][j]);
-// 			j++;
-// 		}
-// 		printf("\n");
-// 		i++;
-// 	}
-// }
+	while (i < height) {
+		j = 0;
+		while (j < width) {
+			printf("%c ", matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+}
 
 int grid_is_wall(char **matrix, t_ray ray)
 {
@@ -69,7 +69,7 @@ int calculate_raycast(t_game *game)
 	int width = 4;
 	(void)game;
 
-	// print_matrix(game->map->map_matrix, game->map->map_height, game->map->map_width);
+	print_matrix(game->map->map_matrix, game->map->map_height, game->map->map_width);
 
 	//      #   #     #   # I N I T I A L I Z E  #   #    #   #
 

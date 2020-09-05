@@ -6,27 +6,11 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 12:14:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/05 12:28:15 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/05 12:46:15 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../library.h"
-
-void print_matrix(char **matrix, int height, int width)
-{
-	int i = 0;
-	int j = 0;
-
-	while (i < height) {
-		j = 0;
-		while (j < width) {
-			printf("%c ", matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
 
 void	transform_file_to_matrix(t_map *map)
 {
@@ -52,5 +36,4 @@ void	transform_file_to_matrix(t_map *map)
 			map->map_matrix[k][j++] = map->map[i];
 		i++;
 	}
-	print_matrix(map->map_matrix, map->map_height, map->map_width);
 }
