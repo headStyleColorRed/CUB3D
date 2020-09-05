@@ -46,22 +46,30 @@ void	get_spaced_map_max_widht(t_map *map)
 	int		fd;
 	int		i;
 	int		max_width;
+	int		symbols;
 	char	*line;
 	t_bool	map_has_begun;
 	
 	fd = open(map->map_file, O_RDONLY);
 	max_width = 0;
 	map_has_begun = ft_false;
+	symbols = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
 		if (is_spaced_map_beggining(line))
 		{
 			map_has_begun = ft_true;
 			i = 0;
-			while (line[i])
+			while (line[i]){
+				if (line[i] != ' ')
+					symbols++;
 				i++;
-			if (i > max_width)
-				max_width = i;
+			}
+			if (symbols > max_width)
+			{
+				max_width = symbols;
+			}
+			symbols = 0;
 		} else if (map_has_begun == ft_true)
 			print_error("Map has a rotten line");
 		

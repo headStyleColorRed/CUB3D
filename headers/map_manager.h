@@ -30,6 +30,7 @@ typedef struct	s_map
 	char  			*EA_texture;
 	char  			*SP_texture;
 	char			*map;
+	char			**map_matrix;
 	char			*map_file;
 	int				map_height;
 	int				map_width;
@@ -70,10 +71,12 @@ void	parse_spaced_map(t_map *map);
 /*  M A P   C O N F O R M I N G */
 void	check_file_conformity(t_map *map);
 
-
 /*  M A P   C O N F O R M I N G	   M A P */
 void	check_map_right_left_conformity(t_map *map);
 void	check_map_top_conformity(t_map *map);
 void	check_map_bottom_conformity(t_map *map);
+
+/*  M A P   M A N A G E R */
+void	transform_file_to_matrix(t_map *map);
 
 #endif

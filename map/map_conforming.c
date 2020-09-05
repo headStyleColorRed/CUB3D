@@ -57,5 +57,4 @@ void	check_file_conformity(t_map *map)
 	check_map_bottom_conformity(map);
 	check_map_player_position(map);
 	check_for_forbidden_characters(map);
-	
 }

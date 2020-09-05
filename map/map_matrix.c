@@ -1,10 +1,14 @@
-//
-//  map_matrix.c
-//  Wolfenstein
-//
-//  Created by Rodrigo  on 10/05/2020.
-//  Copyright © 2020 Rodrigo . All rights reserved.
-//
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_matrix.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 12:31:47 by rlabrado          #+#    #+#             */
+/*   Updated: 2020/09/05 12:31:50 by rlabrado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../library.h"
 

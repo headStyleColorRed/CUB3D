@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_reader.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/05 12:15:38 by rlabrado          #+#    #+#             */
+/*   Updated: 2020/09/05 12:15:46 by rlabrado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../library.h"
 
 char	*read_map(t_map *raw_map)
@@ -43,6 +55,7 @@ void	process_file(char *map_file, t_map *map)
 
 	parse_cube_map(raw_map, map);
 	check_file_conformity(map);
+	transform_file_to_matrix(map);
 }
 
 void	file_processor(int argc, char **argv, t_map *map)
