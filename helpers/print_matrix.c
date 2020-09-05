@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   globals.h                                          :+:      :+:    :+:   */
+/*   print_matrix.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/05 12:56:20 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/05 12:56:25 by rlabrado         ###   ########.fr       */
+/*   Created: 2020/09/05 12:55:25 by rlabrado          #+#    #+#             */
+/*   Updated: 2020/09/05 12:58:50 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef globals_h
-#define globals_h
+#include "../library.h"
 
-typedef enum e_map_parser
+void print_matrix(char **matrix, int height, int width)
 {
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-	RESOLUTION,
-	SPRITE,
-	FLOOR,
-	CEILING,
-	MAP
-}			t_map_parser;
+	int i = 0;
+	int j = 0;
 
-typedef enum e_bool
-{
-	ft_false,
-	ft_true
-}			t_bool;
-
-char	*map_textures(t_map_parser chosenMap);
-#endif 
+	while (i < height) {
+		j = 0;
+		while (j < width) {
+			printf("%c ", matrix[i][j]);
+			j++;
+		}
+		printf("\n");
+		i++;
+	}
+	exit(-1);
+}

@@ -29,27 +29,12 @@ int draw_vertical_line(t_game *game, t_coordinate *start, int height, int color)
 	return (0);
 }
 
-void print_matrix(char **matrix, int height, int width)
-{
-	int i = 0;
-	int j = 0;
-
-	while (i < height) {
-		j = 0;
-		while (j < width) {
-			printf("%c ", matrix[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
-
 int grid_is_wall(char **matrix, t_ray ray)
 {
 	if (matrix[ray.y_grid][ray.x_grid] == '1')
 	{
 		printf("Wall at x:%d - y:%d\n", ray.y_grid, ray.x_grid);
+		print_error("wall founded");
 		return 1;
 	}
 	else
@@ -64,49 +49,10 @@ double f_tan(int num)
 
 int calculate_raycast(t_game *game)
 {
-
-	int height = 4;
-	int width = 4;
-	(void)game;
-
-	print_matrix(game->map->map_matrix, game->map->map_height, game->map->map_width);
-
-	//      #   #     #   # I N I T I A L I Z E  #   #    #   #
-
-	// Rows
-	char **matrix = malloc(height * sizeof(int *));
-
-	// Cols
-	for (int i = 0; i < height; i++)
-		matrix[i] = malloc(width * sizeof(int));
-
-	// Fill
-	int print = '0';
-	for (int i = 0; i < height; i++)
-	{
-		for (int j = 0; j < height; j++)
-		{
-			print = i == 0 ? '1' : '0';
-			matrix[i][j] = print;
-		}
-	}
-	matrix[3][1] = 'N';
-
-	// Print
-	// for (int i = 0; i < height; i++)
-	// {
-	// 	for (int j = 0; j < height; j++)
-	// 	{
-	// 		printf("%c ", matrix[i][j]);
-	// 	}
-	// 	printf("\n");
-	// }
-
-	//      #   #     #   #  R A Y C A S T  #   #    #   #
-
 	int				is_up;
 	int				in_loop;
 	int				wall_height;
+	char			**matrix;
 	t_ray			old_ray;
 	t_ray			new_ray;
 	t_coordinate	subsequent;
@@ -115,7 +61,8 @@ int calculate_raycast(t_game *game)
 	is_up = 1;
 	subsequent.y = is_up ? wall_height : wall_height * -1;
 	subsequent.x = wall_height / f_tan(60);
-
+	matrix = game->map->map_matrix;
+	
 	// First Point
 	old_ray.y = ((224 / wall_height) * wall_height - 1);
 	old_ray.x = 96 + ((224 - old_ray.y) / f_tan(60));

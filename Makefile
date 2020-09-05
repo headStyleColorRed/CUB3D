@@ -10,6 +10,7 @@ SRCS			=	map/map_conforming.c \
 					engine/engine_movement.c \
 					engine/engine_game.c \
 					engine/engine_raycast.c \
+					helpers/print_matrix.c \
 					errors/errorManager.c \
 					game/game.c \
 					globals.c \

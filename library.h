@@ -23,6 +23,7 @@
 #include "headers/globals.h"
 #include "headers/game_engine.h"
 #include "headers/game.h"
+#include "headers/helpers.h"
 
 # define BUFF_SIZE 42
 
