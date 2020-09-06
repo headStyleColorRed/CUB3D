@@ -43,7 +43,7 @@ int calculate_raycast(t_game *game)
 	t_coordinate	subsequent;
 
 	is_up = 1;
-	subsequent.y = is_up ? SQUARE_SIZE : SQUARE_SIZE * -1;
+	subsequent.y = is_up ? SQUARE_SIZE * -1 : SQUARE_SIZE;
 	subsequent.x = SQUARE_SIZE / tan(radians(60));
 	matrix = game->map->map_matrix;
 
@@ -68,7 +68,7 @@ int calculate_raycast(t_game *game)
 			old_ray.x = new_ray.x;
 		}
 
-		new_ray.y = old_ray.y + (subsequent.y * -1);
+		new_ray.y = old_ray.y + subsequent.y;
 		new_ray.x = old_ray.x + subsequent.x;
 
 		new_ray.y_grid = new_ray.y / SQUARE_SIZE;
