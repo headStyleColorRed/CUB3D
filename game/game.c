@@ -2,9 +2,7 @@
 #include "../library.h"
 
 int     pressed_key(int keycode, t_game *game)
-{
-    // check_for_movement()
-    
+{   
     if (keycode == KEY_W ||
         keycode == KEY_S ||
         keycode == KEY_D ||
@@ -44,6 +42,7 @@ void    start_game(t_map *map, t_game *game)
 	game->map = map;
     add_key_hooks(game);
 
+	set_player_begining_position(game);
     
 	mlx_loop_hook(game->window.ptr, &run_game, game);
 	mlx_loop(game->window.ptr);

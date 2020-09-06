@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
+#include <math.h>
 
 #include "libraries/get_next_line/get_next_line.h"
 #include "libraries/libft/libft.h"

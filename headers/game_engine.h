@@ -21,7 +21,10 @@ typedef struct  s_ray
 
 /*  G A M E   E N G I N E */
 void	check_for_movement(t_game *game, int keycode);
+void	set_player_begining_position(t_game *game);
 
+
+/*  G A M E   R A Y C A S T */
 void	apply_raycast(t_game *game);
 
 #endif 
