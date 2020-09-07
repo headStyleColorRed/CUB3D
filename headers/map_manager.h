@@ -30,7 +30,7 @@ typedef struct	s_map
 	char  			*EA_texture;
 	char  			*SP_texture;
 	char			*map;
-	char			**map_matrix;
+	int				**map_matrix;
 	char			*map_file;
 	int				map_height;
 	int				map_width;

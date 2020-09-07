@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 12:14:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/05 12:46:15 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/07 22:14:14 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,12 @@ void	transform_file_to_matrix(t_map *map)
 			j = 0;
 		}
 		else
-			map->map_matrix[k][j++] = map->map[i];
+		{
+			if (ft_isalnum(map->map[i]) == 1)
+				map->map_matrix[k][j++] = ft_atoi(&map->map[i]);
+			else
+				map->map_matrix[k][j++] = 8;
+		}
 		i++;
 	}
 }
