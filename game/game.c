@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/07 23:40:10 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/07 23:44:50 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void initialize_map_variables(t_game *game)
 {
-
+	game->raycast.current_ray = 0;
 }
 
 void    set_up_window(t_game *game)

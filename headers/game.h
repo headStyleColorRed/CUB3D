@@ -48,6 +48,7 @@ typedef	struct		s_player_position
 typedef	struct		s_raycasting
 {
 	t_player_position	player_position;
+	int					current_ray;
 }					t_raycasting;
 
 typedef	struct		s_game
