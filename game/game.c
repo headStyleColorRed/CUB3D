@@ -1,36 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
+/*   Updated: 2020/09/07 23:40:10 by rlabrado         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../library.h"
 
-int     pressed_key(int keycode, t_game *game)
-{   
-    if (keycode == KEY_W ||
-        keycode == KEY_S ||
-        keycode == KEY_D ||
-        keycode == KEY_A )
-        check_for_movement(game, keycode);
-        
-    return (0);
+void initialize_map_variables(t_game *game)
+{
+
 }
 
-void    add_key_hooks(t_game *game)
+void    set_up_window(t_game *game)
 {
-    mlx_hook(game->window.win,X_EVENT_KEY_PRESS, 0, &pressed_key, game);
-}
+	int			bpp;
+	int			sizeline;
+	int			endian;
 
-void    set_up_window(t_map *map, t_window *window)
-{
-    if (!(window->ptr = mlx_init()))
+    if (!(game->window.ptr = mlx_init()))
         print_error("Error initiating mlx");
-    if (!(window->win = mlx_new_window(window->ptr, map->resolution.width, map->resolution.height, "Wolfenstein")))
+    if (!(game->window.win = mlx_new_window(game->window.ptr, game->map->resolution.width, game->map->resolution.height, "Wolfenstein")))
         print_error("Error creating mlx window");
+    if (!(game->window.img_ptr = mlx_new_image(game->window.ptr, game->map->resolution.width, game->map->resolution.height)))
+        print_error("Error creating mlx new image");
+    if (!(game->window.img_str = mlx_get_data_addr(game->window.img_ptr, bpp, sizeline, endian)))
+        print_error("Error creating mlx data address");
 }
 
 int    run_game(t_game *game)
 {
-    (void)game;
-     apply_raycast(game);
-    draw_sprites();
-    show_image();
+	new_frame(game);
+	update_movement(game);
     
     return (0);
 }
@@ -38,11 +44,12 @@ int    run_game(t_game *game)
 
 void    start_game(t_map *map, t_game *game)
 {
-    set_up_window(map, &game->window);
-	game->map = map;
+    set_up_window(game);
+	game->map = map; // El orden es importante. key_hooks debajo siempre!
     add_key_hooks(game);
 
 	set_player_begining_position(game);
+	initialize_map_variables(game);
     
 	mlx_loop_hook(game->window.ptr, &run_game, game);
 	mlx_loop(game->window.ptr);

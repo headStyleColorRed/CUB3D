@@ -6,13 +6,13 @@ void check_for_movement(t_game *game, int keycode)
 
 	speed = 5;
 	if (keycode == KEY_W)
-		game->player_position.y -= speed;
+		game->raycast.player_position.y -= speed;
 	else if (keycode == KEY_S)
-		game->player_position.y += speed;
+		game->raycast.player_position.y += speed;
 	else if (keycode == KEY_D)
-		game->player_position.x += speed;
+		game->raycast.player_position.x += speed;
 	else if (keycode == KEY_A)
-		game->player_position.x -= speed;
+		game->raycast.player_position.x -= speed;
 }
 
 void	set_player_begining_position(t_game *game)
@@ -27,10 +27,10 @@ void	set_player_begining_position(t_game *game)
 		j = 0;
 		while (j < game->map->map_width) {
 			if (ft_check_if_character(matrix[i][j], "NSWE")) {
-				game->player_position.x_grid = j;
-				game->player_position.y_grid = i;
-				game->player_position.x = (j * SQUARE_SIZE) + (SQUARE_SIZE / 2);
-				game->player_position.y = (i * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+				game->raycast.player_position.y_grid = i;
+				game->raycast.player_position.x_grid = j;
+				game->raycast.player_position.x = (j * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+				game->raycast.player_position.y = (i * SQUARE_SIZE) + (SQUARE_SIZE / 2);
 				return;
 			}
 			j++;

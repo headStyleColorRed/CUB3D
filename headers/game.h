@@ -22,6 +22,10 @@ typedef	struct		s_window
 {
 	void			*ptr;
 	void			*win;
+	void			*img_ptr;
+	void			*img_str;
+	int				height;
+	int				width;
 }					t_window;
 
 typedef	struct		s_coordinate
@@ -36,16 +40,35 @@ typedef	struct		s_player_position
 	int				y;
 	int				x_grid;
 	int				y_grid;
+	int				dir_x;
+	int				dir_y;
 }					t_player_position;
+
+
+typedef	struct		s_raycasting
+{
+	t_player_position	player_position;
+}					t_raycasting;
 
 typedef	struct		s_game
 {
     t_window    		window;
-	t_player_position	player_position;
+	t_raycasting		raycast;
 	t_map				*map;
 }					t_game;
 
 
+/*  G A M E		L O O P  */
 void    start_game(t_map *map, t_game *t_game);
+
+
+/*  G A M E   M O V E M E N T  */
+int     pressed_key(int keycode, t_game *game);
+void    add_key_hooks(t_game *game);
+void 	update_movement(t_game *game);
+
+
+/*  G A M E   D R A W  */
+void	new_frame(t_game *game);
 
 #endif 
