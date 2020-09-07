@@ -29,8 +29,8 @@ int    run_game(t_game *game)
 {
     (void)game;
      apply_raycast(game);
-    // draw_sprites();
-    // show_image();
+    draw_sprites();
+    show_image();
     
     return (0);
 }
