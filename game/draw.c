@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:45 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/07 23:47:17 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/07 23:55:54 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	new_frame(t_game *game)
 
 void	draw_map(t_game *game)
 {
-	while (game->raycast.current_ray < game->window.width)
+	game->raycast.current_ray = -1;
+	while (++game->raycast.current_ray < game->window.width)
 	{
-		
+		init_raycast(game);
+		int_dda(game);
 	}
 }
