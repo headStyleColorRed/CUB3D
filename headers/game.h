@@ -47,23 +47,32 @@ typedef	struct		s_player_position
 
 typedef	struct		s_raycasting
 {
-	t_player_position	player_position;
-	int		current_ray;
-	double	ray_dir_x;
-	double	ray_dir_y;
-	double	init_ray_dir_x;
-	double 	init_ray_dir_y;
-	double 	plane_x;	
-	double 	plane_y;
-	double 	delta_dist_x;
-	double	delta_dist_y;
-
-	double	ray_pos_x;
-	double	ray_pos_y;
-	double	map_x;
-	double	delta_dist_x;
-	double	delta_dist_y;
-	double	camera;
+	t_player_position player_position;
+	int			current_ray;
+	int			map_x;
+	int			map_y;
+	int			step_x;
+	int			step_y;
+	int			hit;
+	int			side;
+	double		pos_x;
+	double     	pos_y;
+	double		dir_x;
+	double		dir_y;
+	double		plane_x;
+	double		plane_y;
+	double		time;
+	double		old_time;
+	double		camera_x;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double 		side_dist_x;
+	double 		side_dist_y;
+    double 		perp_wall_dist;
+	     
+	
 }					t_raycasting;
 
 typedef	struct		s_game
@@ -89,7 +98,11 @@ void	new_frame(t_game *game);
 
 
 /*  G A M E   D D A  */
-void	init_raycast(t_game *game);
-void	int_dda(t_game *game);
+void dda_declarations(t_game *game);
+void execute_dda(t_game *game);
+
+
+/*  R A Y C A S T  */
+void raycast(t_game *game);
 
 #endif 

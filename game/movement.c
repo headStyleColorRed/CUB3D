@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/07 23:40:09 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/08 20:35:57 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void update_movement(t_game *game)
 {
 	// TODO: Create the movement logic
 	
-	draw_map(game);
+	raycast(game);
 }

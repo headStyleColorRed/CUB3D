@@ -17,7 +17,6 @@ void check_for_movement(t_game *game, int keycode)
 
 void	set_player_begining_position(t_game *game)
 {
-	(void)game;
 	char **matrix;
 	int i = 0;
 	int j = 0;

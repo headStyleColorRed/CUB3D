@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/07 23:44:50 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/08 20:35:58 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 
 void initialize_map_variables(t_game *game)
 {
-	game->raycast.current_ray = 0;
+	t_raycasting ray_cast;
+
+	ray_cast = game->raycast;
+	ray_cast.pos_x = ray_cast.player_position.x;
+	ray_cast.pos_y = ray_cast.player_position.y;
+	ray_cast.dir_x = -1;
+	ray_cast.dir_y = 0;
+	ray_cast.plane_x = 0;
+	ray_cast.plane_y = 0.66;
+	ray_cast.time = 0;
+	ray_cast.old_time = 0;
+	ray_cast.current_ray = 0;
 }
 
 void    set_up_window(t_game *game)
@@ -35,7 +46,7 @@ void    set_up_window(t_game *game)
 
 int    run_game(t_game *game)
 {
-	new_frame(game);
+	// new_frame(game);
 	update_movement(game);
     
     return (0);
