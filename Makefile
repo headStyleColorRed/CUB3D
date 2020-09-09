@@ -12,6 +12,10 @@ SRCS			=	map/map_conforming.c \
 					helpers/print_matrix.c \
 					errors/errorManager.c \
 					game/game.c \
+					game/dda.c \
+					game/draw.c \
+					game/movement.c \
+					game/raycast.c \
 					globals.c \
 					main.c \
 					libraries/get_next_line/get_next_line.c

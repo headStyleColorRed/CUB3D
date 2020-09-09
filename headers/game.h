@@ -55,6 +55,12 @@ typedef	struct		s_raycasting
 	int			step_y;
 	int			hit;
 	int			side;
+	int			line_height;
+	int			draw_start;
+	int			draw_end;
+	int			celing_color;
+	int			wall_color;
+	int			floor_color;
 	double		pos_x;
 	double     	pos_y;
 	double		dir_x;
@@ -84,7 +90,7 @@ typedef	struct		s_game
 
 
 /*  G A M E		L O O P  */
-void    start_game(t_map *map, t_game *t_game);
+void    start_game(t_game *t_game);
 
 
 /*  G A M E   M O V E M E N T  */
@@ -94,7 +100,9 @@ void 	update_movement(t_game *game);
 
 
 /*  G A M E   D R A W  */
-void	new_frame(t_game *game);
+void	put_pxl_to_img(t_game *game);
+void 	draw_wall(t_game *game);
+void 	draw_floor_and_ceiling(t_game *game);
 
 
 /*  G A M E   D D A  */

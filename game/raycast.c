@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/08 21:47:57 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/09 21:33:59 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void raycast_declarations(t_game *game)
 	ray_cast.ray_dir_y = ray_cast.dir_y + ray_cast.plane_y * ray_cast.camera_x;
 	ray_cast.map_x = (int)ray_cast.pos_x;
 	ray_cast.map_y = (int)ray_cast.pos_y;
-	ray_cast.delta_dist_x = abs(1 / ray_cast.ray_dir_x);
-	ray_cast.delta_dist_y = abs(1 / ray_cast.ray_dir_y);
+	ray_cast.delta_dist_x = fabs(1 / ray_cast.ray_dir_x);
+	ray_cast.delta_dist_y = fabs(1 / ray_cast.ray_dir_y);
 	ray_cast.hit = 0;
 
 }
@@ -57,8 +57,10 @@ void raycast(t_game *game)
 		raycast_declarations(game);
 		dda_declarations(game);
 		execute_dda(game);
-		wall_calculation(game)
+		wall_calculation(game);
 
+		draw_wall(game);
+		draw_floor_and_ceiling(game);
 
 
 		ray_cast.current_ray++;
