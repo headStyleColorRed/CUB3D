@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/09 22:02:15 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:12:07 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,35 @@
 
 void initialize_map_variables(t_game *game)
 {
-	t_raycasting ray_cast;
-
-	ray_cast = &game->raycast;
-	ray_cast.pos_x = ray_cast.player_position.x;
-	ray_cast.pos_y = ray_cast.player_position.y;
-	ray_cast.dir_x = -1.0;
-	ray_cast.dir_y = 0;
-	ray_cast.plane_x = 0;
-	ray_cast.plane_y = 0.66;
-	ray_cast.time = 0;
-	ray_cast.old_time = 0;
-	ray_cast.current_ray = 0;
-	ray_cast.map_x = 0;
-	ray_cast.map_y = 0;
-	ray_cast.step_x = 0;
-	ray_cast.step_y = 0;
-	ray_cast.hit = 0;
-	ray_cast.side = 0;
-	ray_cast.line_height = 0;
-	ray_cast.draw_start = 0;
-	ray_cast.draw_end = 0;
-	ray_cast.celing_color = 0x66CCFF;
-	ray_cast.wall_color = 0xdd8800;
-	ray_cast.floor_color = 0x333333;
+	game->raycast.pos_x = game->raycast.player_position.x;
+	game->raycast.pos_y = game->raycast.player_position.y;
+	game->raycast.dir_x = -1.0;
+	game->raycast.dir_y = 0;
+	game->raycast.plane_x = 0;
+	game->raycast.plane_y = 0.66;
+	game->raycast.time = 0;
+	game->raycast.old_time = 0;
+	game->raycast.current_ray = 0;
+	game->raycast.map_x = 0;
+	game->raycast.map_y = 0;
+	game->raycast.step_x = 0;
+	game->raycast.step_y = 0;
+	game->raycast.hit = 0;
+	game->raycast.side = 0;
+	game->raycast.line_height = 0;
+	game->raycast.draw_start = 0;
+	game->raycast.draw_end = 0;
+	game->raycast.celing_color = 0x66CCFF;
+	game->raycast.wall_color = 0xdd8800;
+	game->raycast.floor_color = 0x333333;
+	game->raycast.camera_x = 0;
+	game->raycast.delta_dist_x = 0;
+	game->raycast.delta_dist_y = 0;
+	game->raycast.side_dist_x = 0;
+	game->raycast.side_dist_y = 0;
+	game->raycast.perp_wall_dist = 0;
+	game->raycast.ray_dir_x = 0;
+	game->raycast.ray_dir_y = 0;
 }
 
 void    set_up_window(t_game *game)

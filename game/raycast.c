@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/09 21:33:59 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/09 22:07:29 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,45 +14,36 @@
 
 void wall_calculation(t_game *game)
 {
-	t_raycasting ray_cast;
-
-	ray_cast = game->raycast;
-	if (ray_cast.side == 0)
-		ray_cast.perp_wall_dist = (ray_cast.map_x - ray_cast.pos_x + (1 - ray_cast.step_x) / 2) / ray_cast.ray_dir_x;
+	if (game->raycast.side == 0)
+		game->raycast.perp_wall_dist = (game->raycast.map_x - game->raycast.pos_x + (1 - game->raycast.step_x) / 2) / game->raycast.ray_dir_x;
 	else 
-		ray_cast.perp_wall_dist = (ray_cast.map_y - ray_cast.pos_y + (1 - ray_cast.step_y) / 2) / ray_cast.ray_dir_y;
+		game->raycast.perp_wall_dist = (game->raycast.map_y - game->raycast.pos_y + (1 - game->raycast.step_y) / 2) / game->raycast.ray_dir_y;
 
-	ray_cast.line_height = (int)(game->window.height / ray_cast.perp_wall_dist);
-	ray_cast.draw_start = -ray_cast.line_height / 2 + game->window.height - 1;
-	if (ray_cast.draw_start < 0)
-		ray_cast.draw_start = 0;
-	ray_cast.draw_end = ray_cast.line_height / 2 + game->window.height / 2;
-	if (ray_cast.draw_end >= game->window.height)
-		ray_cast.draw_end = game->window.height - 1;
+	game->raycast.line_height = (int)(game->window.height / game->raycast.perp_wall_dist);
+	game->raycast.draw_start = -game->raycast.line_height / 2 + game->window.height - 1;
+	if (game->raycast.draw_start < 0)
+		game->raycast.draw_start = 0;
+	game->raycast.draw_end = game->raycast.line_height / 2 + game->window.height / 2;
+	if (game->raycast.draw_end >= game->window.height)
+		game->raycast.draw_end = game->window.height - 1;
 }
 
 void raycast_declarations(t_game *game)
 {
-	t_raycasting ray_cast;
-
-	ray_cast = game->raycast;
-	ray_cast.camera_x = 2 * ray_cast.current_ray / (double)game->window.width - 1;
-	ray_cast.ray_dir_x = ray_cast.dir_x + ray_cast.plane_x * ray_cast.camera_x;
-	ray_cast.ray_dir_y = ray_cast.dir_y + ray_cast.plane_y * ray_cast.camera_x;
-	ray_cast.map_x = (int)ray_cast.pos_x;
-	ray_cast.map_y = (int)ray_cast.pos_y;
-	ray_cast.delta_dist_x = fabs(1 / ray_cast.ray_dir_x);
-	ray_cast.delta_dist_y = fabs(1 / ray_cast.ray_dir_y);
-	ray_cast.hit = 0;
+	game->raycast.camera_x = 2 * game->raycast.current_ray / (double)game->window.width - 1;
+	game->raycast.ray_dir_x = game->raycast.dir_x + game->raycast.plane_x * game->raycast.camera_x;
+	game->raycast.ray_dir_y = game->raycast.dir_y + game->raycast.plane_y * game->raycast.camera_x;
+	game->raycast.map_x = (int)game->raycast.pos_x;
+	game->raycast.map_y = (int)game->raycast.pos_y;
+	game->raycast.delta_dist_x = fabs(1 / game->raycast.ray_dir_x);
+	game->raycast.delta_dist_y = fabs(1 / game->raycast.ray_dir_y);
+	game->raycast.hit = 0;
 
 }
 
 void raycast(t_game *game)
 {
-	t_raycasting ray_cast;
-	
-	ray_cast = game->raycast;
-	while(ray_cast.current_ray < game->window.width)
+	while(game->raycast.current_ray < game->window.width)
 	{
 		raycast_declarations(game);
 		dda_declarations(game);
@@ -63,6 +54,6 @@ void raycast(t_game *game)
 		draw_floor_and_ceiling(game);
 
 
-		ray_cast.current_ray++;
+		game->raycast.current_ray++;
 	}
 }
