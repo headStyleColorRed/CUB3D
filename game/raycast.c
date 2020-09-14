@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/09 22:07:29 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/14 15:13:20 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void wall_calculation(t_game *game)
 
 void raycast_declarations(t_game *game)
 {
+	game->window.height = game->map->map_height;
+	game->window.width =game->map->map_width;
+
 	game->raycast.camera_x = 2 * game->raycast.current_ray / (double)game->window.width - 1;
 	game->raycast.ray_dir_x = game->raycast.dir_x + game->raycast.plane_x * game->raycast.camera_x;
 	game->raycast.ray_dir_y = game->raycast.dir_y + game->raycast.plane_y * game->raycast.camera_x;

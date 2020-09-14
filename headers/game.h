@@ -40,8 +40,6 @@ typedef	struct		s_player_position
 	int				y;
 	int				x_grid;
 	int				y_grid;
-	int				dir_x;
-	int				dir_y;
 }					t_player_position;
 
 
