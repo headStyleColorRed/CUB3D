@@ -10,6 +10,7 @@ SRCS			=	map/map_conforming.c \
 					engine/engine_movement.c \
 					engine/engine_game.c \
 					helpers/print_matrix.c \
+					helpers/square.c \
 					errors/errorManager.c \
 					game/game.c \
 					game/dda.c \

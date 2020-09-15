@@ -1,39 +1,7 @@
-
-
-#  #  #  #  #  #  #  #  #  #  #  #  #
-#     X C O D E  I G N O R E S      #
-#  #  #  #  #  #  #  #  #  #  #  #  #
-
-.DS_Store
-
-Wolfenstein.xcodeproj/
-minilibx_mms_20200219_beta.tgz
-minilibx_opengl.tgz
-norme.en.pdf
-.Trashes
-
-*.swp
-*.lock
-*~.nib
-DerivedData/
-
-build/
-*.pbxuser
-*.mode1v3
-*.mode2v3
-*.perspectivev3
-!default.pbxuser
-!default.mode1v3
-!default.mode2v3
-!default.perspectivev3
-*.xccheckout
-xcuserdata/
-*.moved-aside
-
 #  #  #  #  #  #  #  #  #  #  #  #  #
 #        C  I G N O R E S           #
 #  #  #  #  #  #  #  #  #  #  #  #  #
 *.o
 *.a
-#Wolfenstein/cub3D
+cub3D	
 *.json

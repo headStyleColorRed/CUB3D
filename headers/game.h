@@ -40,6 +40,9 @@ typedef	struct		s_player_position
 	int				y;
 	int				x_grid;
 	int				y_grid;
+	int				dir_x;
+	int				dir_y;
+
 }					t_player_position;
 
 
@@ -98,7 +101,7 @@ void 	update_movement(t_game *game);
 
 
 /*  G A M E   D R A W  */
-void	put_pxl_to_img(t_game *game);
+void	put_pxl_to_img(t_game *game, int i);
 void 	draw_wall(t_game *game);
 void 	draw_floor_and_ceiling(t_game *game);
 

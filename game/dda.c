@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:52:11 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/14 20:58:46 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 14:59:05 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void execute_dda(t_game *game)
 			game->raycast.map_y += game->raycast.step_y;
 			game->raycast.side = 1;
 		}	
-		if (game->map->map_matrix[game->raycast.map_x][game->raycast.map_y] > 0)
+		if (game->map->map_matrix[game->raycast.map_x][game->raycast.map_y] > 48 && game->map->map_matrix[game->raycast.map_x][game->raycast.map_y] != 'N')
 			game->raycast.hit = 1;
 	}
 }
