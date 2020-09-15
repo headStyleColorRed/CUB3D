@@ -20,10 +20,10 @@
 
 typedef	struct		s_window
 {
-	void			*ptr;
+	void			*mlx;
 	void			*win;
 	void			*img_ptr;
-	void			*img_str;
+	void			*img;
 	int				height;
 	int				width;
 }					t_window;

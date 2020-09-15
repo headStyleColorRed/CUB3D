@@ -10,11 +10,11 @@
 // 	void *image_pointer;
 // 	char *my_image_data;
 
-// 	image_pointer = (void *)mlx_new_image(game->window.ptr, game->map->resolution.width, game->map->resolution.height);
+// 	image_pointer = (void *)mlx_new_image(game->window.mlx, game->map->resolution.width, game->map->resolution.height);
 
 // 	my_image_data = mlx_get_data_addr(image_pointer, &bpp, &size_line, &endian);
 
-// 	mlx_put_image_to_window(game->window.ptr, game->window.win, my_image_data, 0, 0);
+// 	mlx_put_image_to_window(game->window.mlx, game->window.win, my_image_data, 0, 0);
 // }
 
 // int grid_is_wall(char **matrix, t_ray ray)

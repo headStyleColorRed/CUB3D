@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 15:26:13 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:03:58 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void initialize_map_variables(t_game *game)
 	game->raycast.draw_end = 0;
 	game->raycast.celing_color = 0x66CCFF;
 	game->raycast.wall_color = 0x00FF00;
-	game->raycast.floor_color = 0x66CCFF;
+	game->raycast.floor_color = 0x333333;
 	game->raycast.camera_x = 0;
 	game->raycast.delta_dist_x = 0;
 	game->raycast.delta_dist_y = 0;
@@ -47,9 +47,9 @@ void initialize_map_variables(t_game *game)
 
 void    set_up_window(t_game *game)
 {
-    if (!(game->window.ptr = mlx_init()))
+    if (!(game->window.mlx = mlx_init()))
         print_error("Error initiating mlx");
-    if (!(game->window.win = mlx_new_window(game->window.ptr, game->map->resolution.width, game->map->resolution.height, "Wolfenstein")))
+    if (!(game->window.win = mlx_new_window(game->window.mlx, game->map->resolution.width, game->map->resolution.height, "Wolfenstein")))
         print_error("Error creating mlx window");
 }
 
@@ -70,6 +70,6 @@ void    start_game(t_game *game)
 	set_player_begining_position(game);
 	initialize_map_variables(game);
     
-	mlx_loop_hook(game->window.ptr, &run_game, game);
-	mlx_loop(game->window.ptr);
+	mlx_loop_hook(game->window.mlx, &run_game, game);
+	mlx_loop(game->window.mlx);
 }

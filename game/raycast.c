@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 15:44:38 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 15:59:19 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,9 @@ void raycast(t_game *game)
 	int sizeline;
 	int endian;
 
-	if (!(game->window.img_ptr = mlx_new_image(game->window.ptr, game->map->resolution.width, game->map->resolution.height)))
-		print_error("Error creating mlx new image");
-	if (!(game->window.img_str = mlx_get_data_addr(game->window.img_ptr, &bpp, &sizeline, &endian)))
-		print_error("Error creating mlx data address");
+	game->window.img = mlx_new_image(game->window.mlx, game->map->resolution.width, game->map->resolution.height);
+	game->window.img_ptr = mlx_get_data_addr(game->window.img, &bpp, &sizeline, &endian);
+
 	while (game->raycast.current_ray < game->window.width)
 	{
 		raycast_declarations(game);
@@ -65,6 +64,7 @@ void raycast(t_game *game)
 		draw_floor_and_ceiling(game);
 		game->raycast.current_ray++;
 	}
-	mlx_put_image_to_window(game->window.ptr, game->window.win, game->window.img_ptr, 0, 0);
-	mlx_destroy_image(game->window.ptr, game->window.img_ptr);
+	game->raycast.current_ray = 0;
+	mlx_put_image_to_window(game->window.mlx, game->window.win, game->window.img, 0, 0);
+	mlx_destroy_image(game->window.mlx, game->window.img);
 }

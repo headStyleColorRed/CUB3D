@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:45 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 15:41:36 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:06:58 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,12 @@ void draw_floor_and_ceiling(t_game *game)
 		i = game->raycast.draw_end;
 		if (game->raycast.current_ray < game->window.width && i < game->window.height)
 		{
-			ft_memcpy(game->window.img_ptr + 4 * game->window.width * i + game->raycast.current_ray * 4, &game->raycast.celing_color, sizeof(int));
-			i++;
+			while (i < game->window.height)
+			{
+				ft_memcpy(game->window.img_ptr + 4 * game->window.width * i + game->raycast.current_ray * 4, &game->raycast.floor_color, sizeof(int));
+				i++;
+			}
+
 		}
 	}
 }
