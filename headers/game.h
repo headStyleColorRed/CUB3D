@@ -71,6 +71,7 @@ typedef	struct		s_raycasting
 	int			wall_color;
 	int			floor_color;
 	double		movement_speed;
+	double		rotation_speed;
 	double		pos_x;
 	double     	pos_y;
 	double		dir_x;
@@ -87,6 +88,8 @@ typedef	struct		s_raycasting
 	double 		side_dist_x;
 	double 		side_dist_y;
     double 		perp_wall_dist;
+	double		old_dir;
+	double		old_plane;
 	     
 	
 }					t_raycasting;

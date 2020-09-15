@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 18:03:12 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 18:18:58 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void initialize_map_variables(t_game *game)
 	game->raycast.ray_dir_x = 0;
 	game->raycast.ray_dir_y = 0;
 	game->raycast.movement_speed = 0.05;
+	game->raycast.rotation_speed = 0.05;
 	game->movement = NONE;
 }
 
