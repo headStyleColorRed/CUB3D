@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 16:03:58 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 16:52:28 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void initialize_map_variables(t_game *game)
 {
-	game->raycast.pos_x = 3;
-	game->raycast.pos_y = 3;
+	game->raycast.pos_x = game->raycast.player_position.x_grid;
+	game->raycast.pos_y = game->raycast.player_position.y_grid;
 	game->raycast.dir_x = -1.0;
 	game->raycast.dir_y = 0;
 	game->raycast.plane_x = 0;
