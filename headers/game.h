@@ -45,6 +45,14 @@ typedef	struct		s_player_position
 
 }					t_player_position;
 
+typedef	enum		e_player_movement
+{
+	NONE,
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT	
+}					t_player_movement;
 
 typedef	struct		s_raycasting
 {
@@ -62,6 +70,7 @@ typedef	struct		s_raycasting
 	int			celing_color;
 	int			wall_color;
 	int			floor_color;
+	double		movement_speed;
 	double		pos_x;
 	double     	pos_y;
 	double		dir_x;
@@ -87,6 +96,8 @@ typedef	struct		s_game
     t_window    		window;
 	t_raycasting		raycast;
 	t_map				*map;
+	t_player_movement	movement;
+	
 }					t_game;
 
 
@@ -96,7 +107,6 @@ void    start_game(t_game *t_game);
 
 /*  G A M E   M O V E M E N T  */
 int     pressed_key(int keycode, t_game *game);
-void    add_key_hooks(t_game *game);
 void 	update_movement(t_game *game);
 
 

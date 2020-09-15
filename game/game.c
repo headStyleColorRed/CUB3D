@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 16:52:28 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 18:03:12 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void initialize_map_variables(t_game *game)
 {
+	game->window.width = game->map->resolution.width;
+	game->window.height = game->map->resolution.height;
 	game->raycast.pos_x = game->raycast.player_position.x_grid;
 	game->raycast.pos_y = game->raycast.player_position.y_grid;
 	game->raycast.dir_x = -1.0;
@@ -43,6 +45,8 @@ void initialize_map_variables(t_game *game)
 	game->raycast.perp_wall_dist = 0;
 	game->raycast.ray_dir_x = 0;
 	game->raycast.ray_dir_y = 0;
+	game->raycast.movement_speed = 0.05;
+	game->movement = NONE;
 }
 
 void    set_up_window(t_game *game)
@@ -65,7 +69,7 @@ int    run_game(t_game *game)
 void    start_game(t_game *game)
 {
     set_up_window(game);
-    add_key_hooks(game);
+    mlx_hook(game->window.win,X_EVENT_KEY_PRESS, 0, &pressed_key, game);
 
 	set_player_begining_position(game);
 	initialize_map_variables(game);

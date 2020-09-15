@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/08 20:35:57 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/15 18:06:40 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,38 @@ int     pressed_key(int keycode, t_game *game)
         keycode == KEY_D ||
         keycode == KEY_A )
         check_for_movement(game, keycode);
+	else if(keycode == KEY_ESC)
+		exit(1);
         
     return (0);
 }
 
-void    add_key_hooks(t_game *game)
-{
-    mlx_hook(game->window.win,X_EVENT_KEY_PRESS, 0, &pressed_key, game);
-}
-
 void update_movement(t_game *game)
 {
-	// TODO: Create the movement logic
-	
+	if (game->movement == UP)
+	{
+		if (game->map->map_matrix[(int)(game->raycast.pos_x + game->raycast.dir_x * game->raycast.movement_speed)][(int)game->raycast.pos_y] != '1')
+			game->raycast.pos_x += game->raycast.dir_x * game->raycast.movement_speed;
+		if (game->map->map_matrix[(int)game->raycast.pos_x][(int)(game->raycast.pos_y + game->raycast.dir_y * game->raycast.movement_speed)] != '1')
+			game->raycast.pos_y += game->raycast.dir_y * game->raycast.movement_speed;
+	}
+
+	if (game->movement == DOWN)
+	{
+		if (game->map->map_matrix[(int)(game->raycast.pos_x - game->raycast.dir_x * game->raycast.movement_speed)][(int)game->raycast.pos_y] != '1')
+			game->raycast.pos_x -= game->raycast.dir_x * game->raycast.movement_speed;
+		if (game->map->map_matrix[(int)game->raycast.pos_x][(int)(game->raycast.pos_y - game->raycast.dir_y * game->raycast.movement_speed)] != '1')
+			game->raycast.pos_y -= game->raycast.dir_y * game->raycast.movement_speed;
+	}
+
+
+
+
+
+
+
+
+
+	game->movement = NONE;
 	raycast(game);
 }
