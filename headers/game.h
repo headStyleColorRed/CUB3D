@@ -45,15 +45,6 @@ typedef	struct		s_player_position
 
 }					t_player_position;
 
-typedef	enum		e_player_movement
-{
-	NONE,
-	UP,
-	DOWN,
-	LEFT,
-	RIGHT	
-}					t_player_movement;
-
 typedef	struct		s_raycasting
 {
 	t_player_position player_position;
@@ -70,6 +61,10 @@ typedef	struct		s_raycasting
 	int			celing_color;
 	int			wall_color;
 	int			floor_color;
+	int			move_up;
+	int			move_down;
+	int			move_right;
+	int			move_left;
 	double		movement_speed;
 	double		rotation_speed;
 	double		pos_x;
@@ -99,8 +94,6 @@ typedef	struct		s_game
     t_window    		window;
 	t_raycasting		raycast;
 	t_map				*map;
-	t_player_movement	movement;
-	
 }					t_game;
 
 

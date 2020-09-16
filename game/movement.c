@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 18:18:40 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:38:50 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int     pressed_key(int keycode, t_game *game)
 
 void update_movement(t_game *game)
 {
-	if (game->movement == UP)
+	if (game->raycast.move_up)
 	{
 		if (game->map->map_matrix[(int)(game->raycast.pos_x + game->raycast.dir_x * game->raycast.movement_speed)][(int)game->raycast.pos_y] != '1')
 			game->raycast.pos_x += game->raycast.dir_x * game->raycast.movement_speed;
@@ -35,7 +35,7 @@ void update_movement(t_game *game)
 			game->raycast.pos_y += game->raycast.dir_y * game->raycast.movement_speed;
 	}
 
-	if (game->movement == DOWN)
+	if (game->raycast.move_down)
 	{
 		if (game->map->map_matrix[(int)(game->raycast.pos_x - game->raycast.dir_x * game->raycast.movement_speed)][(int)game->raycast.pos_y] != '1')
 			game->raycast.pos_x -= game->raycast.dir_x * game->raycast.movement_speed;
@@ -43,7 +43,7 @@ void update_movement(t_game *game)
 			game->raycast.pos_y -= game->raycast.dir_y * game->raycast.movement_speed;
 	}
 
-	if (game->movement == RIGHT)
+	if (game->raycast.move_right)
 	{
 		game->raycast.old_dir = game->raycast.dir_x;
 		game->raycast.dir_x = game->raycast.dir_x * cos(-game->raycast.rotation_speed) - game->raycast.dir_y * sin(-game->raycast.rotation_speed);
@@ -53,7 +53,7 @@ void update_movement(t_game *game)
 		game->raycast.plane_y = game->raycast.old_plane * sin(-game->raycast.rotation_speed) + game->raycast.plane_y * cos(-game->raycast.rotation_speed);
 	}
 
-	if (game->movement == LEFT)
+	if (game->raycast.move_left)
 	{
 		game->raycast.old_dir = game->raycast.dir_x;
 		game->raycast.dir_x = game->raycast.dir_x * cos(game->raycast.rotation_speed) - game->raycast.dir_y * sin(game->raycast.rotation_speed);
@@ -64,10 +64,9 @@ void update_movement(t_game *game)
 	}
 
 
-
-
-
-
-	game->movement = NONE;
+	game->raycast.move_up = 0;
+	game->raycast.move_down = 0;
+	game->raycast.move_right = 0;
+	game->raycast.move_left = 0;
 	raycast(game);
 }

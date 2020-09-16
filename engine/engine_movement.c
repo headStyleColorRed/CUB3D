@@ -6,13 +6,13 @@ void check_for_movement(t_game *game, int keycode)
 
 	speed = 5;
 	if (keycode == KEY_W)
-		game->movement = UP;
+		game->raycast.move_up = 1;
 	else if (keycode == KEY_S)
-		game->movement = DOWN;
+		game->raycast.move_down = 1;
 	else if (keycode == KEY_D)
-		game->movement = RIGHT;
+		game->raycast.move_right = 1;
 	else if (keycode == KEY_A)
-		game->movement = LEFT;
+		game->raycast.move_left = 1;
 }
 
 void	set_player_begining_position(t_game *game)
