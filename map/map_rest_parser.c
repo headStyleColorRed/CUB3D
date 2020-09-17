@@ -30,8 +30,8 @@ void	parse_resolution(char *raw_map, t_map *map)
 	
 	splitted_resolutions = ft_split(resolutions, ' ');
 	check_splitted_fields(splitted_resolutions, 2);
-	map->resolution.width = ft_atoi(splitted_resolutions[1]);
-	map->resolution.height = ft_atoi(splitted_resolutions[2]);
+	map->resolution.height = ft_atoi(splitted_resolutions[1]);
+	map->resolution.width = ft_atoi(splitted_resolutions[2]);
 	
 }
 

@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 16:23:53 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/17 16:27:18 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	set_player_begining_position(t_game *game)
 				game->raycast.player_position.x = (i * SQUARE_SIZE) + (SQUARE_SIZE / 2);
 				game->raycast.player_position.y = (j * SQUARE_SIZE) + (SQUARE_SIZE / 2);
 				game->raycast.player_position.orientation = matrix[i][j];
-				// game->map->map_matrix[i][j] = '0';
+				game->map->map_matrix[i][j] = '0';
 				return;
 			}
 			j++;
