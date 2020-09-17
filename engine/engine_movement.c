@@ -1,20 +1,5 @@
 #include "../library.h"
 
-void check_for_movement(t_game *game, int keycode)
-{
-	int speed;
-
-	speed = 5;
-	if (keycode == KEY_W)
-		game->raycast.move_up = 1;
-	else if (keycode == KEY_S)
-		game->raycast.move_down = 1;
-	else if (keycode == KEY_D)
-		game->raycast.move_right = 1;
-	else if (keycode == KEY_A)
-		game->raycast.move_left = 1;
-}
-
 void	set_player_begining_position(t_game *game)
 {
 	char **matrix;

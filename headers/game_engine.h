@@ -20,7 +20,6 @@ typedef struct  s_ray
 }               t_ray;
 
 /*  G A M E   E N G I N E */
-void	check_for_movement(t_game *game, int keycode);
 void	set_player_begining_position(t_game *game);
 
 

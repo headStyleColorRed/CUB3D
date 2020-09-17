@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/16 11:38:50 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/17 13:39:38 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,30 @@
 
 int     pressed_key(int keycode, t_game *game)
 {   
-    if (keycode == KEY_W ||
-        keycode == KEY_S ||
-        keycode == KEY_D ||
-        keycode == KEY_A )
-        check_for_movement(game, keycode);
+	if (keycode == KEY_W)
+		game->raycast.move_up = 1;
+	else if (keycode == KEY_S)
+		game->raycast.move_down = 1;
+	else if (keycode == KEY_D)
+		game->raycast.move_right = 1;
+	else if (keycode == KEY_A)
+		game->raycast.move_left = 1;
 	else if(keycode == KEY_ESC)
 		exit(1);
+        
+    return (0);
+}
+
+int     released_key(int keycode, t_game *game)
+{
+	if (keycode == KEY_W)
+		game->raycast.move_up = 0;
+	else if (keycode == KEY_S)
+		game->raycast.move_down = 0;
+	else if (keycode == KEY_D)
+		game->raycast.move_right = 0;
+	else if (keycode == KEY_A)
+		game->raycast.move_left = 0;
         
     return (0);
 }
@@ -62,11 +79,6 @@ void update_movement(t_game *game)
 		game->raycast.plane_x = game->raycast.plane_x * cos(game->raycast.rotation_speed) - game->raycast.plane_y * sin(game->raycast.rotation_speed);
 		game->raycast.plane_y = game->raycast.old_plane * sin(game->raycast.rotation_speed) + game->raycast.plane_y * cos(game->raycast.rotation_speed);
 	}
-
-
-	game->raycast.move_up = 0;
-	game->raycast.move_down = 0;
-	game->raycast.move_right = 0;
-	game->raycast.move_left = 0;
+	
 	raycast(game);
 }
