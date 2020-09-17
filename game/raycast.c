@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/15 15:59:19 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/17 13:51:34 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ void raycast_declarations(t_game *game)
 	game->raycast.delta_dist_x = sqrt(1 + (square_of_double(game->raycast.ray_dir_y) / square_of_double(game->raycast.ray_dir_x)));
 	game->raycast.delta_dist_y = sqrt(1 + (square_of_double(game->raycast.ray_dir_x) / square_of_double(game->raycast.ray_dir_y)));
 	game->raycast.hit = 0;
-
 }
 
 void raycast(t_game *game)

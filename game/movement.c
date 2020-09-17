@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 13:39:38 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/17 14:02:22 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int     released_key(int keycode, t_game *game)
     return (0);
 }
 
-void update_movement(t_game *game)
+int		run_game(t_game *game)
 {
 	if (game->raycast.move_up)
 	{
@@ -81,4 +81,28 @@ void update_movement(t_game *game)
 	}
 	
 	raycast(game);
+	return (0);
+}
+
+void	set_player_begining_position(t_game *game)
+{
+	char **matrix;
+	int i = 0;
+	int j = 0;
+
+	matrix = game->map->map_matrix;
+	while (i < game->map->map_height) {
+		j = 0;
+		while (j < game->map->map_width) {
+			if (ft_check_if_character(matrix[i][j], "NSWE")) {
+				game->raycast.player_position.y_grid = i;
+				game->raycast.player_position.x_grid = j;
+				game->raycast.player_position.x = (j * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+				game->raycast.player_position.y = (i * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+				return;
+			}
+			j++;
+		}
+		i++;
+	}
 }

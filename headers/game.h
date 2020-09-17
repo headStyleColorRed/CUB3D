@@ -104,7 +104,8 @@ void    start_game(t_game *t_game);
 /*  G A M E   M O V E M E N T  */
 int     pressed_key(int keycode, t_game *game);
 int     released_key(int keycode, t_game *game);
-void 	update_movement(t_game *game);
+int		run_game(t_game *game);
+void	set_player_begining_position(t_game *game);
 
 
 /*  G A M E   D R A W  */

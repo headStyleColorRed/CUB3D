@@ -1,3 +1,6 @@
+
+NAME			= 	cub3D
+
 SRCS			=	map/map_conforming.c \
 					map/map_confoming_map.c \
 					map/map_texture_parser.c \
@@ -7,8 +10,6 @@ SRCS			=	map/map_conforming.c \
 					map/map_rest_parser.c \
 					map/map_parser.c \
 					map/map_converting_map.c \
-					engine/engine_movement.c \
-					engine/engine_game.c \
 					helpers/print_matrix.c \
 					helpers/square.c \
 					errors/errorManager.c \
@@ -20,17 +21,16 @@ SRCS			=	map/map_conforming.c \
 					globals.c \
 					main.c \
 					libraries/get_next_line/get_next_line.c
+
 OBJS			= $(SRCS:.c=.o)
 
-NAME	= 	cub3D
+FLAGS			= -Wall -Werror -Wextra -g
 
-FLAGS	= -Wall -Werror -Wextra -g
+GCC 			= gcc
 
-GCC = gcc
+INCLUDE			= -I minilibx
 
-INCLUDE	= -I minilibx
-
-MLX_DIR		=	libraries/minilibx_opengl
+MLX_DIR			= libraries/minilibx_opengl
 
 all:	$(NAME)
 
