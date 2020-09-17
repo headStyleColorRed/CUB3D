@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 15:56:14 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 16:51:59 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/17 17:04:59 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ void	player_orientation(t_game *game)
 	char orientation;
 	
 	orientation = game->raycast.player_position.orientation;
-	if (orientation == 'N')
-		update_orientation(game, -1, 0, 0, 0.66);
-	if (orientation == 'S')
-		update_orientation(game, 1, 0, 0, -0.66);
 	if (orientation == 'W')
-		update_orientation(game, 0, -1, -0.66, 0);
+		update_orientation(game, -1, 0, 0, 0.66);
 	if (orientation == 'E')
+		update_orientation(game, 1, 0, 0, -0.66);
+	if (orientation == 'S')
+		update_orientation(game, 0, -1, -0.66, 0);
+	if (orientation == 'N')
 		update_orientation(game, 0, 1, 0.66, 0);
 }
