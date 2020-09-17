@@ -42,6 +42,7 @@ typedef	struct		s_player_position
 	int				y_grid;
 	int				dir_x;
 	int				dir_y;
+	char			orientation;
 
 }					t_player_position;
 
@@ -89,16 +90,25 @@ typedef	struct		s_raycasting
 	
 }					t_raycasting;
 
-typedef	struct		s_game
+typedef	struct			s_game
 {
     t_window    		window;
 	t_raycasting		raycast;
 	t_map				*map;
-}					t_game;
+}						t_game;
 
 
 /*  G A M E		L O O P  */
 void    start_game(t_game *t_game);
+void	set_up_window(t_game *game);
+
+
+/*  I N I T I A L I T A T I O N */
+
+void	initialize_map_variables_1(t_game *game);
+void	initialize_map_variables_2(t_game *game);
+void	update_orientation(t_game *game, double dir_x, double dir_y, double plane_x, double plane_y);
+void	player_orientation(t_game *game);
 
 
 /*  G A M E   M O V E M E N T  */

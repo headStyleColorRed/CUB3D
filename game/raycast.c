@@ -6,11 +6,18 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 13:51:34 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/17 15:37:30 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../library.h"
+
+/*
+**	The meat of the engine, the raycast!
+**
+**
+**
+*/
 
 void wall_calculation(t_game *game)
 {
@@ -28,11 +35,19 @@ void wall_calculation(t_game *game)
 		game->raycast.draw_end = game->window.height - 1;
 }
 
+/*
+**	1. Window dimensions get copied (should change this)
+**	2. Relation camera plane <-> screen calculation
+**	
+** 
+**
+**
+*/
+
 void raycast_declarations(t_game *game)
 {
 	game->window.height = game->map->resolution.height;
 	game->window.width = game->map->resolution.width;
-
 	game->raycast.camera_x = 2 * game->raycast.current_ray / (double)game->window.width - 1;
 	game->raycast.ray_dir_x = game->raycast.dir_x + game->raycast.plane_x * game->raycast.camera_x;
 	game->raycast.ray_dir_y = game->raycast.dir_y + game->raycast.plane_y * game->raycast.camera_x;
@@ -42,6 +57,15 @@ void raycast_declarations(t_game *game)
 	game->raycast.delta_dist_y = sqrt(1 + (square_of_double(game->raycast.ray_dir_x) / square_of_double(game->raycast.ray_dir_y)));
 	game->raycast.hit = 0;
 }
+
+/*
+**	The meat of the engine, the raycast!
+**	1. A new image is created
+**	2. A pointer to this image which we will use to fill with data is saved.
+**	3. A loop runs from left to right creating the whole image, ray by ray.
+**	4. The image is printed on the terminal.
+**	5. Gets destroyed right after.
+*/
 
 void raycast(t_game *game)
 {

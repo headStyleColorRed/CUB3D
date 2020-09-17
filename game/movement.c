@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 14:02:22 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/17 16:23:53 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ int     released_key(int keycode, t_game *game)
         
     return (0);
 }
+
+/*
+** 	The run_game() function begins by calculating the players new 
+** 		position in case there's any movement at all. 
+**	The up and down movements are pretty straight forward (check if
+**		the position in the map where the player is going is or isn't a wall,
+**		and add it to the current position).
+**	The right/left (rotation) movement is somewhat more complicated because the
+**		camera direction and camera plane must be rotated. So we substract or add
+**		the multiplication of the ray direction times the rotation cosine/sine.
+**	Once these calculations are done, we proceed with the raycast loop.
+*/
 
 int		run_game(t_game *game)
 {
@@ -95,10 +107,12 @@ void	set_player_begining_position(t_game *game)
 		j = 0;
 		while (j < game->map->map_width) {
 			if (ft_check_if_character(matrix[i][j], "NSWE")) {
-				game->raycast.player_position.y_grid = i;
-				game->raycast.player_position.x_grid = j;
-				game->raycast.player_position.x = (j * SQUARE_SIZE) + (SQUARE_SIZE / 2);
-				game->raycast.player_position.y = (i * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+				game->raycast.player_position.y_grid = j;
+				game->raycast.player_position.x_grid = i;
+				game->raycast.player_position.x = (i * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+				game->raycast.player_position.y = (j * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+				game->raycast.player_position.orientation = matrix[i][j];
+				// game->map->map_matrix[i][j] = '0';
 				return;
 			}
 			j++;
