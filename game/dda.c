@@ -6,11 +6,19 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:52:11 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 16:28:29 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/19 13:14:31 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../library.h"
+
+/*
+**	dda_declarations()
+**	Dda is the Digital Differential Analysis, which means, a calculator for the next colision grid.
+**	Diferent conditionals depending on the direction of the ray left/right first and up/down and by
+**	substracting the current position to the map position and multiplying to the next
+**	colision zone, calculate the euclidean distance.
+*/
 
 void dda_declarations(t_game *game)
 {
@@ -37,6 +45,12 @@ void dda_declarations(t_game *game)
 	
 }
 
+/*
+**	execute_dda()
+** 	Once the dda calculations are done the next step is run square by square if a wall is hit.
+**	Checking if the right or left grid is closest we add the delta distance and continue
+**	adding it until a hit square (a 1 / 2) is found by the last conditional on the function.
+*/
 
 void execute_dda(t_game *game)
 {

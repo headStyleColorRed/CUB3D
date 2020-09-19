@@ -6,17 +6,19 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 15:37:30 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/19 13:56:10 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../library.h"
 
 /*
-**	The meat of the engine, the raycast!
-**
-**
-**
+**	wall_calculation()
+**	1. In order to avoid skewed walls, we use the distance to the camera plane instead
+**		of the distance to the player to calculate the walls distance and therefore, the walls height.
+**	2. The wall height is calculated by dividing the window's height byt the distance to the player,
+**		that way the bigger the screen... the bigger the walls.
+**	3. Then the wall's start and end pixel position are calculated by substracting the top/bottom part by the window dimensions.
 */
 
 void wall_calculation(t_game *game)
@@ -36,11 +38,13 @@ void wall_calculation(t_game *game)
 }
 
 /*
+**	Raycast_declarations()
 **	1. Window dimensions get copied (should change this)
 **	2. Relation camera plane <-> screen calculation
-**	
-** 
-**
+**	3. Direction of ray calculated by adding the player directiont o the camera plane angle.
+** 	4. Delta distances are the next x/y ray square crossings on the map by calculating the
+**		hypotenuse of the triangle created between the distance to the closest square and
+**		the ray direction intersection.
 **
 */
 
