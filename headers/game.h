@@ -119,7 +119,7 @@ void	set_player_begining_position(t_game *game);
 
 
 /*  G A M E   D R A W  */
-void	put_pxl_to_img(t_game *game, int i);
+void	put_pxl_to_img(t_game *game, int i, int color);
 void 	draw_wall(t_game *game);
 void 	draw_floor_and_ceiling(t_game *game);
 

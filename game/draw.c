@@ -6,11 +6,17 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:45 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/19 14:01:38 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/19 14:21:18 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../library.h"
+
+/*
+**	put_pxl_to_img()
+**	After checking that the ray isn't offlimits, we copy the chosen color to
+**	the image array by jumping from ray to ray to the next line.
+*/
 
 void	put_pxl_to_img(t_game *game, int i, int color)
 {
@@ -37,7 +43,8 @@ void draw_wall(t_game *game)
 
 /*
 **	draw_floor_and_ceiling()
-**	We copy the colored pixels from the wall's start point, to the end one.
+**	We copy the colored pixels from the screen first pixel to the wall's start point.
+**	and from the wall's end pixel to the screen's end pixel.
 */
 
 void draw_floor_and_ceiling(t_game *game)
@@ -45,26 +52,10 @@ void draw_floor_and_ceiling(t_game *game)
 	int i;
 
 	i = 0;
-	if (game->raycast.current_ray < game->window.width)
-	{
-		while (i < game->raycast.draw_start)
-		{
-			put_pxl_to_img(game, i, game->raycast.celing_color);
-			i++;
-		}
-	}
-	
+	while (i < game->raycast.draw_start)
+		put_pxl_to_img(game, i++, game->raycast.celing_color);
+	i = game->raycast.draw_end;
 	if (game->raycast.draw_end > 0)
-	{
-		i = game->raycast.draw_end;
-		if (game->raycast.current_ray < game->window.width && i < game->window.height)
-		{
-			while (i < game->window.height)
-		{
-			put_pxl_to_img(game, i, game->raycast.floor_color);
-			i++;
-		}
-
-		}
-	}
+		while (i < game->window.height)
+			put_pxl_to_img(game, i++, game->raycast.floor_color);
 }
