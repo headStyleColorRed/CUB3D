@@ -18,6 +18,23 @@
 
 # define SQUARE_SIZE	64
 
+typedef	enum		e_textures
+{
+	TEX_CEILING,
+	TEX_WALL,
+	TEX_FLOOR	
+}					t_textures;
+
+typedef	struct		s_texture
+{
+	void		*img;
+	char		*data;
+	int			bpp;
+	int			sizeline;
+	int			endian;
+}					t_texture;
+
+
 typedef	struct		s_window
 {
 	void			*mlx;
@@ -48,45 +65,54 @@ typedef	struct		s_player_position
 
 typedef	struct		s_raycasting
 {
-	t_player_position player_position;
-	int			current_ray;
-	int			map_x;
-	int			map_y;
-	int			step_x;
-	int			step_y;
-	int			hit;
-	int			side;
-	int			line_height;
-	int			draw_start;
-	int			draw_end;
-	int			celing_color;
-	int			wall_color;
-	int			floor_color;
-	int			move_up;
-	int			move_down;
-	int			move_right;
-	int			move_left;
-	double		movement_speed;
-	double		rotation_speed;
-	double		pos_x;
-	double     	pos_y;
-	double		dir_x;
-	double		dir_y;
-	double		plane_x;
-	double		plane_y;
-	double		time;
-	double		old_time;
-	double		camera_x;
-	double		ray_dir_x;
-	double		ray_dir_y;
-	double		delta_dist_x;
-	double		delta_dist_y;
-	double 		side_dist_x;
-	double 		side_dist_y;
-    double 		perp_wall_dist;
-	double		old_dir;
-	double		old_plane;
+	t_player_position	player_position;
+	t_texture			textures[4];
+	int					current_ray;
+	int					map_x;
+	int					map_y;
+	int					step_x;
+	int					step_y;
+	int					hit;
+	int					side;
+	int					line_height;
+	int					draw_start;
+	int					draw_end;
+	int					celing_color;
+	int					wall_color;
+	int					floor_color;
+	int					move_up;
+	int					move_down;
+	int					move_right;
+	int					move_left;
+	int					textures_on;
+	int					current_texture;
+	double				movement_speed;
+	double				rotation_speed;
+	double				pos_x;
+	double     			pos_y;
+	double				dir_x;
+	double				dir_y;
+	double				plane_x;
+	double				plane_y;
+	double				time;
+	double				old_time;
+	double				camera_x;
+	double				ray_dir_x;
+	double				ray_dir_y;
+	double				delta_dist_x;
+	double				delta_dist_y;
+	double 				side_dist_x;
+	double 				side_dist_y;
+    double 				perp_wall_dist;
+	double				old_dir;
+	double				old_plane;
 	     
+	int					id;
+	int					text_x;
+	int					text_y;
+	double				wall_x;
+	double				wall_y;
+
 	
 }					t_raycasting;
 
@@ -122,6 +148,7 @@ void	set_player_begining_position(t_game *game);
 void	put_pxl_to_img(t_game *game, int i, int color);
 void 	draw_wall(t_game *game);
 void 	draw_floor_and_ceiling(t_game *game);
+void	load_textures(t_game *game);
 
 
 /*  G A M E   D D A  */

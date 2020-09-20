@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 17:15:06 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/20 16:22:09 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	start_game(t_game *game)
 	set_player_begining_position(game);
 	initialize_map_variables_1(game);
 	initialize_map_variables_2(game);
+
+	game->raycast.textures_on = 1;
+	load_textures(game);
 	player_orientation(game);
 	raycast(game);
 	mlx_loop_hook(game->window.mlx, &run_game, game);
