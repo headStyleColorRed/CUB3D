@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/19 13:56:10 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/21 17:06:21 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ void wall_calculation(t_game *game)
 		game->raycast.perp_wall_dist = (game->raycast.map_x - game->raycast.pos_x + (1 - game->raycast.step_x) / 2) / game->raycast.ray_dir_x;
 	else 
 		game->raycast.perp_wall_dist = (game->raycast.map_y - game->raycast.pos_y + (1 - game->raycast.step_y) / 2) / game->raycast.ray_dir_y;
-
+	if (game->raycast.perp_wall_dist <= 0)
+		game->raycast.perp_wall_dist = 1;
 	game->raycast.line_height = (int)(game->window.height / game->raycast.perp_wall_dist);
 	game->raycast.draw_start = -game->raycast.line_height / 2 + game->window.height / 2;
 	if (game->raycast.draw_start < 0)
