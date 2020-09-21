@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:45 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/20 16:28:26 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/21 14:43:01 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,17 @@
 **	the image array by jumping from ray to ray to the next line.
 */
 
-void	put_pxl_to_img(t_game *game, int i, int color)
+void	put_pxl_to_img(t_game *game, int i, int color, int is_wall)
 {
-	int y_text_pix;
-	int	new_color;
 	
 	if (game->raycast.current_ray >= game->window.width && i >= game->window.height)
 		return ;
 
-	if (game->raycast.textures_on) 
+	if (game->raycast.textures_on && is_wall) 
 	{
-		y_text_pix = i * 256 - game->window.height * 128 + game->raycast.perp_wall_dist * 128;
-		game->raycast.text_y = abs((int)((y_text_pix * 64) / game->raycast.perp_wall_dist) / 256);
+		game->raycast.text_y = abs((((i * 256 - game->window.height * 128 + game->raycast.line_height * 128) * 64) / game->raycast.line_height) / 256);
 
-		
-		new_color = game->raycast.textures[game->raycast.id].data[game->raycast.text_y % 64 * game->raycast.textures[game->raycast.id].sizeline + game->raycast.text_x % 64 * game->raycast.textures[game->raycast.id].bpp / 8];
-		ft_memcpy(game->window.img_ptr + 4 * game->window.width * i + game->raycast.current_ray * 4, &new_color, sizeof(int));
+		ft_memcpy(game->window.img_ptr + 4 * game->window.width * i + game->raycast.current_ray * 4, &game->raycast.textures[game->raycast.id].data[game->raycast.text_y % 64 * game->raycast.textures[game->raycast.id].sizeline + game->raycast.text_x % 64 * game->raycast.textures[game->raycast.id].bpp / 8], sizeof(int));
 	} 
 	else 
 	{
@@ -71,7 +66,7 @@ void draw_wall(t_game *game)
 	}
 	while (i <= game->raycast.draw_end)
 	{
-		put_pxl_to_img(game, i, game->raycast.wall_color);
+		put_pxl_to_img(game, i, game->raycast.wall_color, 1);
 		i++;
 	}
 }
@@ -88,11 +83,11 @@ void draw_floor_and_ceiling(t_game *game)
 
 	i = 0;
 	while (i < game->raycast.draw_start)
-		put_pxl_to_img(game, i++, game->raycast.celing_color);
+		put_pxl_to_img(game, i++, game->raycast.celing_color, 0);
 	i = game->raycast.draw_end;
 	if (game->raycast.draw_end > 0)
 		while (i < game->window.height)
-			put_pxl_to_img(game, i++, game->raycast.floor_color);
+			put_pxl_to_img(game, i++, game->raycast.floor_color, 0);
 }
 
 void	load_textures(t_game *game)

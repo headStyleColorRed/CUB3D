@@ -15,6 +15,7 @@
 # define KEY_FORWARD 	126
 # define KEY_BACKWARD	125
 # define KEY_ESC	    53
+# define KEY_T			16
 
 # define SQUARE_SIZE	64
 
@@ -145,7 +146,7 @@ void	set_player_begining_position(t_game *game);
 
 
 /*  G A M E   D R A W  */
-void	put_pxl_to_img(t_game *game, int i, int color);
+void	put_pxl_to_img(t_game *game, int i, int color, int is_wall);
 void 	draw_wall(t_game *game);
 void 	draw_floor_and_ceiling(t_game *game);
 void	load_textures(t_game *game);

@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:26:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/17 16:27:18 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/21 14:28:43 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int     pressed_key(int keycode, t_game *game)
 		game->raycast.move_right = 1;
 	else if (keycode == KEY_A)
 		game->raycast.move_left = 1;
+	else if (keycode == KEY_T)
+		game->raycast.textures_on = game->raycast.textures_on == 0 ? 1 : 0;
 	else if(keycode == KEY_ESC)
 		exit(1);
         
