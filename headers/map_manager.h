@@ -22,13 +22,17 @@ typedef struct s_resolution
 	int height;
 }				t_resolution;
 
-typedef struct	s_map
+typedef struct s_map_textures
 {
 	char  			*NO_texture;
 	char  			*SO_texture;
 	char  			*WE_texture;
 	char  			*EA_texture;
 	char  			*SP_texture;
+}				t_map_textures;
+
+typedef struct	s_map
+{
 	char			*map;
 	char			**map_matrix;
 	char			*map_file;
@@ -37,6 +41,7 @@ typedef struct	s_map
 	t_resolution 	resolution;
 	t_color			floor_color;
 	t_color			ceiling_color;
+	t_map_textures	map_textures;
 }				t_map;
 
 

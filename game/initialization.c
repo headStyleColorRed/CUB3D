@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 15:56:14 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/20 14:12:19 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/21 16:44:42 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,19 @@ void	player_orientation(t_game *game)
 		update_orientation(game, 0, -1, -0.66, 0);
 	if (orientation == 'N')
 		update_orientation(game, 0, 1, 0.66, 0);
+}
+
+void	load_ceiling_floor_colors(t_game *game)
+{
+	game->raycast.celing_color = hexcolor(game->map->ceiling_color.r_color,
+											game->map->ceiling_color.g_color,
+											game->map->ceiling_color.b_color);
+	game->raycast.floor_color = hexcolor(game->map->floor_color.r_color,
+											game->map->floor_color.g_color,
+											game->map->floor_color.b_color);
+}
+
+int		hexcolor(int r, int g, int b)
+{
+    return (r<<16) | (g<<8) | b;
 }

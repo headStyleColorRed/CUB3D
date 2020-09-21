@@ -10,7 +10,7 @@
 
 void	check_texture_conformity(t_map *map)
 {
-	if (!map->NO_texture || !map->SO_texture || !map->WE_texture || !map->EA_texture || !map->SP_texture)
+	if (!map->map_textures.NO_texture || !map->map_textures.SO_texture || !map->map_textures.WE_texture || !map->map_textures.EA_texture || !map->map_textures.SP_texture)
 		print_error("One of the textures is missing.");
 }
 

@@ -21,9 +21,11 @@
 
 typedef	enum		e_textures
 {
-	TEX_CEILING,
-	TEX_WALL,
-	TEX_FLOOR	
+	TEXT_NORTH,
+	TEXT_SOUTH,
+	TEXT_WEST,
+	TEXT_EAST,
+	TEXT_SPRITE
 }					t_textures;
 
 typedef	struct		s_texture
@@ -67,7 +69,7 @@ typedef	struct		s_player_position
 typedef	struct		s_raycasting
 {
 	t_player_position	player_position;
-	t_texture			textures[4];
+	t_texture			textures[5];
 	int					current_ray;
 	int					map_x;
 	int					map_y;
@@ -108,7 +110,7 @@ typedef	struct		s_raycasting
 	double				old_dir;
 	double				old_plane;
 	     
-	int					id;
+	int					text_orient;
 	int					text_x;
 	int					text_y;
 	double				wall_x;
@@ -136,6 +138,8 @@ void	initialize_map_variables_1(t_game *game);
 void	initialize_map_variables_2(t_game *game);
 void	update_orientation(t_game *game, double dir_x, double dir_y, double plane_x, double plane_y);
 void	player_orientation(t_game *game);
+void	load_ceiling_floor_colors(t_game *game);
+int		hexcolor(int r, int g, int b);
 
 
 /*  G A M E   M O V E M E N T  */
