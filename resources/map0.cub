@@ -1,9 +1,9 @@
 R 768 1068
 NO ./textures/sand.xpm
 SO ./textures/stone.xpm
-WE ./textures/banner.xpm
+WE ./textures/blue.xpm
 EA ./textures/red_brick.xpm
-S ./textures/stone.xpm
+S ./textures/hitler.xpm
 F 51,51,51
 C 102,204,255
 
@@ -12,7 +12,7 @@ C 102,204,255
 1000000001100001
 1000000001100001
 1000000000000001
-1011100000000001
-1000100000000001
-1N00000000000001
+1011200000000001
+1000100N00000001
+1000000000000001
 1111111111111111

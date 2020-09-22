@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:45 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/22 13:09:43 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/22 13:21:10 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void get_orientation_ray(t_game *game)
 		else
 			game->raycast.text_orient = 3;
 	}
+	if (game->map->map_matrix[game->raycast.map_x][game->raycast.map_y] == '2')
+		game->raycast.text_orient = 4;
 	
 }
 
