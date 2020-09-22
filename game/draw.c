@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:45 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/21 16:20:15 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/22 13:09:43 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 void	put_pxl_to_img(t_game *game, int i, int color, int is_wall)
 {
-	
+
 	if (game->raycast.current_ray >= game->window.width && i >= game->window.height)
 		return ;
 
@@ -36,6 +36,26 @@ void	put_pxl_to_img(t_game *game, int i, int color, int is_wall)
 	}
 }
 
+
+void get_orientation_ray(t_game *game)
+{
+	if (game->raycast.side == 0)
+	{
+		if (game->raycast.ray_dir_x <= 0)
+			game->raycast.text_orient = 0;
+		else
+			game->raycast.text_orient = 1;
+	} 
+	else
+	{
+		if (game->raycast.ray_dir_y <= 0)
+			game->raycast.text_orient = 2;
+		else
+			game->raycast.text_orient = 3;
+	}
+	
+}
+
 /*
 **	draw_wall()
 **	We copy the colored pixels from the wall's start point, to the end one.
@@ -48,11 +68,12 @@ void draw_wall(t_game *game)
 	i = game->raycast.draw_start;
 	if (game->raycast.textures_on)
 	{
-		game->raycast.text_orient = 0;
 		if (game->raycast.side == 0)
 			game->raycast.wall_x = game->raycast.pos_y + game->raycast.perp_wall_dist * game->raycast.ray_dir_y;
 		else 
 			game->raycast.wall_x = game->raycast.pos_x + game->raycast.perp_wall_dist * game->raycast.ray_dir_x;
+		
+		get_orientation_ray(game);
 
 		game->raycast.text_x = (int)(game->raycast.wall_x * (double)64);
 
