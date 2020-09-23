@@ -21,8 +21,8 @@
 
 #include "headers/game.h"
 #include "headers/map_manager.h"
+#include "headers/save.h"
 #include "headers/errorManager.h"
-#include "headers/globals.h"
 #include "headers/helpers.h"
 
 # define BUFF_SIZE 42

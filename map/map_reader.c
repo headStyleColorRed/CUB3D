@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 12:15:38 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/23 13:00:55 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:49:21 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ void	file_processor(int argc, char **argv, t_game *game)
 	int i;
 
 	i = 0;
+	game->is_save = 0;
 	if (argc == 2)
-		process_file(argv[argc - 1], &game->map);
+		process_file(argv[MAP_PATH], &game->map);
 	else if (argc == 3)
-		save_game(argv[1], game);
+		save_game(argv, game);
 	else
 		print_error("Not enough arguments, map missing");
 }

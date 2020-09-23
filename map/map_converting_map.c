@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 12:14:40 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/05 12:46:15 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 14:33:37 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,26 @@ void	transform_file_to_matrix(t_map *map)
 			map->map_matrix[k][j++] = map->map[i];
 		i++;
 	}
+}
+
+char	*map_textures(t_map_parser chosenMap)
+{
+
+	if(chosenMap == NORTH)
+		return "NO";
+	else if (chosenMap == SOUTH)
+		return "SO";
+	else if (chosenMap == WEST)
+		return "WE";
+	else if (chosenMap == EAST)
+		return "EA";
+	else if (chosenMap == RESOLUTION)
+		return "R ";
+	else if (chosenMap == SPRITE)
+		return "S ";
+	else if (chosenMap == FLOOR)
+		return "F ";
+	else if (chosenMap == CEILING)
+		return "C ";
+	return 0;
 }

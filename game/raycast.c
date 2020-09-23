@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/23 13:03:14 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:48:12 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,7 @@ void raycast(t_game *game)
 	}
 	game->raycast.current_ray = 0;
 	mlx_put_image_to_window(game->window.mlx, game->window.win, game->window.img, 0, 0);
+	if (game->is_save)
+		return ;
 	mlx_destroy_image(game->window.mlx, game->window.img);
 }

@@ -19,8 +19,7 @@ SRCS			=	map/map_conforming.c \
 					game/movement.c \
 					game/raycast.c \
 					game/initialization.c \
-					game/save.c \
-					globals.c \
+					saving/save.c \
 					main.c \
 					libraries/get_next_line/get_next_line.c
 

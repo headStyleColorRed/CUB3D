@@ -1,36 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   globals.h                                          :+:      :+:    :+:   */
+/*   save.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/05 12:56:20 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/05 12:56:25 by rlabrado         ###   ########.fr       */
+/*   Created: 2020/09/23 14:19:36 by rlabrado          #+#    #+#             */
+/*   Updated: 2020/09/23 14:23:42 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef globals_h
-#define globals_h
+#ifndef SAVE_H
+#define SAVE_H
 
-typedef enum e_map_parser
-{
-	NORTH,
-	SOUTH,
-	WEST,
-	EAST,
-	RESOLUTION,
-	SPRITE,
-	FLOOR,
-	CEILING,
-	MAP
-}			t_map_parser;
 
-typedef enum e_bool
-{
-	ft_false,
-	ft_true
-}			t_bool;
+/*  B I T M A P   S A V E  */
+void	save_game(char **arguments, t_game *game);
+void	save_process(char **arguments, t_game *game);
 
-char	*map_textures(t_map_parser chosenMap);
-#endif 
+#endif

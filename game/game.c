@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/23 13:03:14 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:48:53 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	start_game(t_game *game)
 	load_textures(game);
 	player_orientation(game);
 	raycast(game);
+	if (game->is_save)
+		return ;
 	mlx_loop_hook(game->window.mlx, &run_game, game);
 	mlx_loop(game->window.mlx);
 }

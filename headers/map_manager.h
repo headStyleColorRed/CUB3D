@@ -9,6 +9,30 @@
 #ifndef map_manager_h
 #define map_manager_h
 
+typedef enum e_map_parser
+{
+	NORTH,
+	SOUTH,
+	WEST,
+	EAST,
+	RESOLUTION,
+	SPRITE,
+	FLOOR,
+	CEILING,
+	MAP
+}			t_map_parser;
+
+typedef enum e_bool
+{
+	ft_false,
+	ft_true
+}			t_bool;
+
+typedef enum e_arguments
+{
+	MAP_PATH = 1,
+	SAVE_FILE
+}			t_arguments;
 
 /*  M A P   R E A D E R */
 char 	*read_map(t_map *raw_map);
@@ -46,7 +70,9 @@ void	check_map_right_left_conformity(t_map *map);
 void	check_map_top_conformity(t_map *map);
 void	check_map_bottom_conformity(t_map *map);
 
-/*  M A P   M A N A G E R */
+/*  M A P   C O N V E R T I N G */
 void	transform_file_to_matrix(t_map *map);
 
+/*  M A P   T E X T U R E S */
+char	*map_textures(t_map_parser chosenMap);
 #endif

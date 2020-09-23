@@ -156,6 +156,7 @@ typedef	struct		s_raycasting
 
 typedef	struct			s_game
 {
+	int					is_save;
     t_window    		window;
 	t_raycasting		raycast;
 	t_map				map;
@@ -198,9 +199,5 @@ void execute_dda(t_game *game);
 
 /*  R A Y C A S T  */
 void raycast(t_game *game);
-
-
-/*  B I T M A P   S A V E  */
-void	save_game(char *map_file, t_game *game);
 
 #endif
