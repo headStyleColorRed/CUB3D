@@ -19,6 +19,7 @@ SRCS			=	map/map_conforming.c \
 					game/movement.c \
 					game/raycast.c \
 					game/initialization.c \
+					game/save.c \
 					globals.c \
 					main.c \
 					libraries/get_next_line/get_next_line.c
@@ -54,7 +55,7 @@ $(NAME):	$(OBJS)
 fclean: clean
 	rm -f $(NAME)
 
-clean : 
+clean :
 		@echo "\033[0;31m[Deleting Objects...]"
 	$(RM) $(OBJS) map/*.o engine/*.o game/*.o
 

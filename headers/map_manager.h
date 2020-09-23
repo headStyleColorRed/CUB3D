@@ -9,46 +9,11 @@
 #ifndef map_manager_h
 #define map_manager_h
 
-typedef struct	s_color
-{
-	int r_color;
-	int g_color;
-	int b_color;
-}				t_color;
-
-typedef struct s_resolution
-{
-	int width;
-	int height;
-}				t_resolution;
-
-typedef struct s_map_textures
-{
-	char  			*NO_texture;
-	char  			*SO_texture;
-	char  			*WE_texture;
-	char  			*EA_texture;
-	char  			*SP_texture;
-}				t_map_textures;
-
-typedef struct	s_map
-{
-	char			*map;
-	char			**map_matrix;
-	char			*map_file;
-	int				map_height;
-	int				map_width;
-	t_resolution 	resolution;
-	t_color			floor_color;
-	t_color			ceiling_color;
-	t_map_textures	map_textures;
-}				t_map;
-
 
 /*  M A P   R E A D E R */
 char 	*read_map(t_map *raw_map);
 void	process_file(char *map_file, t_map *map);
-void	file_processor(int argc, char **argv, t_map *map);
+void	file_processor(int argc, char **argv, t_game *game);
 
 /*  M A P   P A R S E R  */
 char	*parse_character(char *raw_map, char *chosen_field);

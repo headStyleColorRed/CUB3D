@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:28:31 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/21 16:45:16 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:03:14 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	set_up_window(t_game *game)
 {
 	if (!(game->window.mlx = mlx_init()))
 		print_error("Error initiating mlx");
-	if (!(game->window.win = mlx_new_window(game->window.mlx, game->map->resolution.width, game->map->resolution.height, "Wolfenstein 3D")))
+	if (!(game->window.win = mlx_new_window(game->window.mlx, game->map.resolution.width, game->map.resolution.height, "Wolfenstein 3D")))
 		print_error("Error creating mlx window");
 }
 
@@ -38,7 +38,7 @@ void	start_game(t_game *game)
 	initialize_map_variables_1(game);
 	initialize_map_variables_2(game);
 	load_ceiling_floor_colors(game);
-	
+
 	load_textures(game);
 	player_orientation(game);
 	raycast(game);

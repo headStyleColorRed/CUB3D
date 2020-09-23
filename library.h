@@ -19,10 +19,10 @@
 #include "libraries/libft/libft.h"
 #include "libraries/minilibx_opengl/mlx.h"
 
+#include "headers/game.h"
 #include "headers/map_manager.h"
 #include "headers/errorManager.h"
 #include "headers/globals.h"
-#include "headers/game.h"
 #include "headers/helpers.h"
 
 # define BUFF_SIZE 42

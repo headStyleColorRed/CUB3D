@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/05 12:15:38 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/05 12:15:46 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:00:55 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,21 +58,15 @@ void	process_file(char *map_file, t_map *map)
 	transform_file_to_matrix(map);
 }
 
-void	file_processor(int argc, char **argv, t_map *map)
+void	file_processor(int argc, char **argv, t_game *game)
 {
 	int i;
 
 	i = 0;
-	if (argc == 1)
-		process_file("resources/map2.cub", map);
 	if (argc == 2)
-		process_file(argv[argc - 1], map);
+		process_file(argv[argc - 1], &game->map);
+	else if (argc == 3)
+		save_game(argv[1], game);
 	else
-	{
-		while (i++ < argc - 1)
-		{
-			process_file(argv[i], map);
-			printf("%s\n\n", map->map);
-		}
-	}
+		print_error("Not enough arguments, map missing");
 }

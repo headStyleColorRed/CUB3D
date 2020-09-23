@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 15:56:14 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/21 16:55:01 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:03:14 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	initialize_map_variables_1(t_game *game)
 {
-	game->window.width = game->map->resolution.width;
-	game->window.height = game->map->resolution.height;
+	game->window.width = game->map.resolution.width;
+	game->window.height = game->map.resolution.height;
 	game->raycast.pos_x = game->raycast.player_position.x_grid;
 	game->raycast.pos_y = game->raycast.player_position.y_grid;
 	game->raycast.dir_x = -1.0;
@@ -69,7 +69,7 @@ void	update_orientation(t_game *game, double dir_x, double dir_y, double plane_x
 void	player_orientation(t_game *game)
 {
 	char orientation;
-	
+
 	orientation = game->raycast.player_position.orientation;
 	if (orientation == 'N')
 		update_orientation(game, -1, 0, 0, 0.66);
@@ -83,12 +83,12 @@ void	player_orientation(t_game *game)
 
 void	load_ceiling_floor_colors(t_game *game)
 {
-	game->raycast.celing_color = hexcolor(game->map->ceiling_color.r_color,
-											game->map->ceiling_color.g_color,
-											game->map->ceiling_color.b_color);
-	game->raycast.floor_color = hexcolor(game->map->floor_color.r_color,
-											game->map->floor_color.g_color,
-											game->map->floor_color.b_color);
+	game->raycast.celing_color = hexcolor(game->map.ceiling_color.r_color,
+											game->map.ceiling_color.g_color,
+											game->map.ceiling_color.b_color);
+	game->raycast.floor_color = hexcolor(game->map.floor_color.r_color,
+											game->map.floor_color.g_color,
+											game->map.floor_color.b_color);
 }
 
 int		hexcolor(int r, int g, int b)

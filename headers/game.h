@@ -19,6 +19,41 @@
 
 # define SQUARE_SIZE	64
 
+typedef struct	s_color
+{
+	int r_color;
+	int g_color;
+	int b_color;
+}				t_color;
+
+typedef struct s_resolution
+{
+	int width;
+	int height;
+}				t_resolution;
+
+typedef struct s_map_textures
+{
+	char  			*NO_texture;
+	char  			*SO_texture;
+	char  			*WE_texture;
+	char  			*EA_texture;
+	char  			*SP_texture;
+}				t_map_textures;
+
+typedef struct	s_map
+{
+	char			*map;
+	char			**map_matrix;
+	char			*map_file;
+	int				map_height;
+	int				map_width;
+	t_resolution 	resolution;
+	t_color			floor_color;
+	t_color			ceiling_color;
+	t_map_textures	map_textures;
+}				t_map;
+
 typedef	enum		e_textures
 {
 	TEXT_NORTH,
@@ -109,21 +144,21 @@ typedef	struct		s_raycasting
     double 				perp_wall_dist;
 	double				old_dir;
 	double				old_plane;
-	     
+
 	int					text_orient;
 	int					text_x;
 	int					text_y;
 	double				wall_x;
 	double				wall_y;
 
-	
+
 }					t_raycasting;
 
 typedef	struct			s_game
 {
     t_window    		window;
 	t_raycasting		raycast;
-	t_map				*map;
+	t_map				map;
 }						t_game;
 
 
@@ -164,4 +199,8 @@ void execute_dda(t_game *game);
 /*  R A Y C A S T  */
 void raycast(t_game *game);
 
-#endif 
+
+/*  B I T M A P   S A V E  */
+void	save_game(char *map_file, t_game *game);
+
+#endif

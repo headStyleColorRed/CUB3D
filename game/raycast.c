@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/07 23:31:30 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/21 17:06:21 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/23 13:03:14 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void wall_calculation(t_game *game)
 {
 	if (game->raycast.side == 0)
 		game->raycast.perp_wall_dist = (game->raycast.map_x - game->raycast.pos_x + (1 - game->raycast.step_x) / 2) / game->raycast.ray_dir_x;
-	else 
+	else
 		game->raycast.perp_wall_dist = (game->raycast.map_y - game->raycast.pos_y + (1 - game->raycast.step_y) / 2) / game->raycast.ray_dir_y;
 	if (game->raycast.perp_wall_dist <= 0)
 		game->raycast.perp_wall_dist = 1;
@@ -51,8 +51,8 @@ void wall_calculation(t_game *game)
 
 void raycast_declarations(t_game *game)
 {
-	game->window.height = game->map->resolution.height;
-	game->window.width = game->map->resolution.width;
+	game->window.height = game->map.resolution.height;
+	game->window.width = game->map.resolution.width;
 	game->raycast.camera_x = 2 * game->raycast.current_ray / (double)game->window.width - 1;
 	game->raycast.ray_dir_x = game->raycast.dir_x + game->raycast.plane_x * game->raycast.camera_x;
 	game->raycast.ray_dir_y = game->raycast.dir_y + game->raycast.plane_y * game->raycast.camera_x;
@@ -78,7 +78,7 @@ void raycast(t_game *game)
 	int sizeline;
 	int endian;
 
-	game->window.img = mlx_new_image(game->window.mlx, game->map->resolution.width, game->map->resolution.height);
+	game->window.img = mlx_new_image(game->window.mlx, game->map.resolution.width, game->map.resolution.height);
 	game->window.img_ptr = mlx_get_data_addr(game->window.img, &bpp, &sizeline, &endian);
 
 	while (game->raycast.current_ray < game->window.width)
