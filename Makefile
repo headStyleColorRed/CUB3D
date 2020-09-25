@@ -56,6 +56,6 @@ fclean: clean
 
 clean :
 		@echo "\033[0;31m[Deleting Objects...]"
-	$(RM) $(OBJS) map/*.o engine/*.o game/*.o
+	$(RM) $(OBJS) map/*.o engine/*.o game/*.o *.bmp
 
 re:				fclean $(NAME)
