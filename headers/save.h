@@ -6,7 +6,7 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 14:19:36 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/24 19:47:29 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/25 21:47:23 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef	struct		s_bitmap
 	int				height;
 	int				width;
 	int				size;
-	char			header[BITMAP_SIZE];
+	unsigned char			header[BITMAP_SIZE];
 	unsigned char	*pixels;
 }					t_bitmap;
 

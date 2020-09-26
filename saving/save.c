@@ -6,64 +6,70 @@
 /*   By: rlabrado <headstylecolorred@gmail.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/23 12:49:37 by rlabrado          #+#    #+#             */
-/*   Updated: 2020/09/24 19:51:08 by rlabrado         ###   ########.fr       */
+/*   Updated: 2020/09/25 21:48:35 by rlabrado         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../library.h"
 
-void	create_bmp_header(t_bitmap *bitmap, t_game *game)
+void		int_to_char(unsigned char *c, int i)
 {
+	c[0] = (unsigned char)(i);
+	c[1] = (unsigned char)(i >> 8);
+	c[2] = (unsigned char)(i >> 16);
+	c[3] = (unsigned char)(i >> 24);
+}
 
+
+void	create_bmp_header(t_bitmap *bitmap, t_game *game, int fd)
+{
 	ft_bzero(bitmap->header, BITMAP_SIZE);
+
+	bitmap->height = game->window.height = 250;
+	bitmap->width = game->window.width = 250;
+
+	bitmap->size = BITMAP_SIZE + (bitmap->height * bitmap->width * 3);
 
 	// Bitmap signature
 	bitmap->header[0] = (unsigned char)('B');
     bitmap->header[1] = (unsigned char)('M');
-
-	bitmap->height = game->window.height = 100;
-	bitmap->width = game->window.width = 100;
-	// File size
-	bitmap->size = BITMAP_SIZE + (bitmap->height * bitmap->width * 4);
-	ft_memset(&bitmap->header[2], (int)bitmap->size, 1);					// The entire file size
-	ft_memset(&bitmap->header[10], (int)BITMAP_SIZE, 1);					// Size of header
-	ft_memset(&bitmap->header[14], (int)40, 1);								// Header size
-	ft_memset(&bitmap->header[18], (int)bitmap->width, 1);					// Image width
-	ft_memset(&bitmap->header[22], (int)bitmap->height, 1);					// Image height
-	ft_memset(&bitmap->header[26], (short)1, 1);							// Color Planes (?)
-	ft_memset(&bitmap->header[28], (short)32, 1);							// Bits per pixel
-	ft_memset(&bitmap->header[34], (short)bitmap->size, 1);					// Image size
-}
-
-void	write_file(t_bitmap *bitmap, int fd)
-{
-	int row, column;
-
-    bitmap->pixels = malloc(bitmap->size);
-    for(row = bitmap->height - 1; row >= 0; row--) {
-        for(column = 0; column < bitmap->width; column++) {
-            int p = (row * bitmap->width + column) * 4;
-            bitmap->pixels[p + 0] = 64; //blue
-            bitmap->pixels[p + 1] = 128;//green
-            bitmap->pixels[p + 2] = 192;//red
-        }
-    }
-
+	int_to_char(bitmap->header + 2, bitmap->size);
+	bitmap->header[10] = (unsigned char)(54);
+	bitmap->header[14] = (unsigned char)(40);
+	int_to_char(bitmap->header + 18, bitmap->width);
+	int_to_char(bitmap->header + 22, bitmap->height);
+	bitmap->header[26] = (unsigned char)(1);
+	bitmap->header[28] = (unsigned char)(24);
 	write(fd, bitmap->header, 54);
-    write(fd, bitmap->pixels, bitmap->size);
-    free(bitmap->pixels);
-    close(fd);
 }
 
-/*
-**	save_process()
-**	1. We read the map as usual
-**	2. Start the game and save the first frame
-**	3. Open the file where the bpm image will be drawn
-**	4. Create the file header
-**
-*/
+void	print_bmp_pixels(t_bitmap *bitmap, t_game *game, int fd)
+{
+	int				x;
+	int				y;
+	unsigned char *pixels = malloc(bitmap->size);
+	(void)game;
+
+	y = bitmap->height - 1;
+	while (y >= 0)
+	{
+		x = 0;
+		while (x < bitmap->width)
+		{
+			int p = (x * bitmap->width + y) * 4;
+            pixels[p + 0] = 64; //blue
+            pixels[p + 1] = 128;//green
+            pixels[p + 2] = 192;//red
+			x++;
+		}
+		y--;
+	}
+    write(fd, bitmap->pixels, bitmap->size);
+    close(fd);
+
+
+}
 
 void	save_process(char **arguments, t_game *game)
 {
@@ -76,8 +82,8 @@ void	save_process(char **arguments, t_game *game)
 		print_error("Saving game file opening error");
 
     // -- FILE HEADER -- //
-	create_bmp_header(&bitmap, game);
-	write_file(&bitmap, fd);
+	create_bmp_header(&bitmap, game, fd);
+	print_bmp_pixels(&bitmap, game, fd);
 
 }
 
