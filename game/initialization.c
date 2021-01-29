@@ -55,7 +55,7 @@ void	initialize_map_variables_2(t_game *game)
 	game->raycast.move_down = 0;
 	game->raycast.move_right = 0;
 	game->raycast.move_left = 0;
-	game->raycast.textures_on = 0;
+	game->raycast.textures_on = 1;
 }
 
 void	update_orientation(t_game *game, double dir_x, double dir_y, double plane_x, double plane_y)
