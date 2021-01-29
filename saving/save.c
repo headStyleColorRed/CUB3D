@@ -15,7 +15,7 @@
 
 void		int_to_char(unsigned char *c, int i)
 {
-	c[0] = (unsigned char)(i);
+	c[0] = (unsigned char)i;
 	c[1] = (unsigned char)(i >> 8);
 	c[2] = (unsigned char)(i >> 16);
 	c[3] = (unsigned char)(i >> 24);
@@ -24,24 +24,24 @@ void		int_to_char(unsigned char *c, int i)
 
 void	create_bmp_header(t_bitmap *bitmap, t_game *game, int fd)
 {
-	ft_bzero(bitmap->header, BITMAP_SIZE);
+	unsigned char	header[54];
+	int				filesize;
+	int				ps;
 
-	bitmap->height = game->window.height ;
-	bitmap->width = game->window.width;
-
-	bitmap->size = BITMAP_SIZE + (bitmap->width * 3 * bitmap->height) + ((4 - (bitmap->width * 3) % 4) % 4);
-
-	// Bitmap signature
-	bitmap->header[0] = (unsigned char)('B');
-    bitmap->header[1] = (unsigned char)('M');
-	int_to_char(bitmap->header + 2, bitmap->size);
-	bitmap->header[10] = (unsigned char)(54);
-	bitmap->header[14] = (unsigned char)(40);
-	int_to_char(bitmap->header + 18, bitmap->width);
-	int_to_char(bitmap->header + 22, -bitmap->height);
-	bitmap->header[26] = (unsigned char)(1);
-	bitmap->header[28] = (unsigned char)(24);
-	write(fd, bitmap->header, 54);
+	ps = ((4 - (bitmap->width * 3) % 4) % 4);
+	filesize = 54 + (game->window.width * 3 * game->window.height) + (ps * game->window.width);
+	ft_bzero(header, 54);
+	header[0] = (unsigned char)('B');
+	header[1] = (unsigned char)('M');
+	int_to_char(header + 2, filesize);
+	header[10] = (unsigned char)(54);
+	header[14] = (unsigned char)(40);
+	int_to_char(header + 18, game->window.width);
+	int_to_char(header + 22, -game->window.height);
+	header[26] = (unsigned char)(1);
+	header[28] = (unsigned char)(32);
+	write(fd, header, 54);
+	write(fd, game->window.img_ptr, game->window.width * game->window.height * 4);
 }
 
 void	print_bmp_pixels(t_bitmap *bitmap, t_game *game, int fd)
@@ -83,7 +83,6 @@ void	save_process(char **arguments, t_game *game)
 
     // -- FILE HEADER -- //
 	create_bmp_header(&bitmap, game, fd);
-	write(fd, game->window.img_ptr, bitmap.width * bitmap.height * 4);
 	close(fd);
 
 }
