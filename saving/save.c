@@ -26,10 +26,10 @@ void	create_bmp_header(t_bitmap *bitmap, t_game *game, int fd)
 {
 	ft_bzero(bitmap->header, BITMAP_SIZE);
 
-	bitmap->height = game->window.height = 250;
-	bitmap->width = game->window.width = 250;
+	bitmap->height = game->window.height ;
+	bitmap->width = game->window.width;
 
-	bitmap->size = BITMAP_SIZE + (bitmap->height * bitmap->width * 3);
+	bitmap->size = BITMAP_SIZE + (bitmap->width * 3 * bitmap->height) + ((4 - (bitmap->width * 3) % 4) % 4);
 
 	// Bitmap signature
 	bitmap->header[0] = (unsigned char)('B');
@@ -38,7 +38,7 @@ void	create_bmp_header(t_bitmap *bitmap, t_game *game, int fd)
 	bitmap->header[10] = (unsigned char)(54);
 	bitmap->header[14] = (unsigned char)(40);
 	int_to_char(bitmap->header + 18, bitmap->width);
-	int_to_char(bitmap->header + 22, bitmap->height);
+	int_to_char(bitmap->header + 22, -bitmap->height);
 	bitmap->header[26] = (unsigned char)(1);
 	bitmap->header[28] = (unsigned char)(24);
 	write(fd, bitmap->header, 54);
@@ -83,7 +83,8 @@ void	save_process(char **arguments, t_game *game)
 
     // -- FILE HEADER -- //
 	create_bmp_header(&bitmap, game, fd);
-	print_bmp_pixels(&bitmap, game, fd);
+	write(fd, game->window.img_ptr, bitmap.width * bitmap.height * 4);
+	close(fd);
 
 }
 
