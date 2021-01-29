@@ -3,6 +3,5 @@
 #  #  #  #  #  #  #  #  #  #  #  #  #
 *.o
 *.a
-cub3D	
-*.json
+cub3D
 preguntas.md
