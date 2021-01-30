@@ -51,6 +51,7 @@ SRC = ft_memset.c \
 	  ft_check_if_character.c \
 	  ft_putstr.c \
 	  ft_check_for_characters.c \
+	  ft_number_of_occurrences.c \
 	  ft_putnbr_fd.c \
 
 OBJ = $(SRC:%.c=%.o)

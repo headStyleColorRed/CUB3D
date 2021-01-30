@@ -55,6 +55,11 @@ void	parse_resolution(char *raw_map, t_map *map);
 void	parse_floor_color(char *raw_map, t_map *map);
 void	parse_ceiling_color(char *raw_map, t_map *map);
 
+
+/*  M A P   R G B   C O N F O R M A N C E */
+void	does_rgb_color_contain_alpha(char **splitted_fields);
+void	is_rgb_color_number_offlimits(char **splitted_fields);
+
 /*  M A P   M A T R I X */
 void	parse_map(t_map *map);
 int		is_map_beggining(char *line);

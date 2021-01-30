@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/cub3D",
             "args": [
-				"invalid_maps/invalid_RGB_008.cub"
+				"resources/trialmap.cub"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

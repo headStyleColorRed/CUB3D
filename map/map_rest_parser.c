@@ -8,35 +8,32 @@
 			3. It saves the texture in the map struct
  */
 
-void	does_rgb_color_contain_alpha(char **splitted_fields)
+int	ft_number_of_occurrences(const char *string, const char character)
 {
-	int	i;
+	int repetitions;
+	int i;
 
 	i = 0;
-	while (splitted_fields[0][i])
-		if (ft_isalnum(splitted_fields[0][i++]) != 1)
-			print_error("First Ceiling/Floor RGB parameter is wrong");
-	i = 0;
-	while (splitted_fields[1][i])
-		if (ft_isalnum(splitted_fields[1][i++]) != 1)
-			print_error("Second Ceiling/Floor RGB parameter is wrong");
-	i = 0;
-	while (splitted_fields[2][i])
-		if (ft_isalnum(splitted_fields[2][i++]) != 1)
-			print_error("Third Ceiling/Floor RGB parameter is wrong");
+	repetitions = 0;
+	while (string[i])
+		if(string[i++] == character)
+			repetitions++;
+	return repetitions;
 }
 
 void	check_splitted_fields(char **splitted_fields, int number_of_fields)
 {
+	if (number_of_fields != 2 && number_of_fields != 3)
+		print_error("Wrong number of fields on resolution or ceiling");
 	if (number_of_fields == 2)
 		if(!splitted_fields[1] || !splitted_fields[2])
 			print_error("Resolution fields missing");
-
 	if (number_of_fields == 3)
 	{
 		if(!splitted_fields[0] || !splitted_fields[1] || !splitted_fields[2])
 			print_error("Ceiling/Floor colors fields missing");
 		does_rgb_color_contain_alpha(splitted_fields);
+		is_rgb_color_number_offlimits(splitted_fields);
 	}
 }
 
@@ -53,7 +50,6 @@ void	parse_resolution(char *raw_map, t_map *map)
 	check_splitted_fields(splitted_resolutions, 2);
 	map->resolution.height = ft_atoi(splitted_resolutions[1]);
 	map->resolution.width = ft_atoi(splitted_resolutions[2]);
-
 }
 
 void	parse_floor_color(char *raw_map, t_map *map)
@@ -65,6 +61,8 @@ void	parse_floor_color(char *raw_map, t_map *map)
 	floor_line = parse_character(raw_map, map_textures(FLOOR));
 	if (!floor_line)
 		print_error("floor color field not found.");
+	if (ft_number_of_occurrences(floor_line, ',') > 2)
+		print_error("Two many commas in Floor field");
 
 	splitted_floor_line = ft_split(floor_line, ' ');
 	splitted_floor_colors = ft_split(splitted_floor_line[1], ',');
@@ -83,6 +81,8 @@ void	parse_ceiling_color(char *raw_map, t_map *map)
 	ceiling_line = parse_character(raw_map, map_textures(CEILING));
 	if (!ceiling_line)
 		print_error("ceiling color field not found.");
+	if (ft_number_of_occurrences(ceiling_line, ',') > 2)
+		print_error("Two many commas in Ceiling field");
 
 	splitted_ceiling_line = ft_split(ceiling_line, ' ');
 	splitted_ceiling_colors = ft_split(splitted_ceiling_line[1], ',');
