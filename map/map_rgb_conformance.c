@@ -32,3 +32,23 @@ void	is_rgb_color_number_offlimits(char **splitted_fields)
 	if(numbered_rgb > 255 || numbered_rgb < 0)
 		print_error("Third Ceiling/Floor RGB parameter is offlimits");
 }
+
+void	checkAllFieldsArePresent(t_map *map)
+{
+	int		fd;
+	int		i;
+	int		j;
+	char	*line;
+
+	fd = open(map->map_file, O_RDONLY);
+	i = 0;
+	j = 0;
+	while (get_next_line(fd, &line) == 1)
+	{
+		printf("%s", line);
+
+		free(line);
+	}
+	close(fd);
+	map->map_height = i;
+}

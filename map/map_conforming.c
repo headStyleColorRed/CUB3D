@@ -23,7 +23,7 @@ void	check_resolution_conformity(t_map *map)
 int		check_map_player_position(t_map *map)
 {
 	int		i;
-	
+
 	i = 0;
 	while(map->map[i])
 	{
@@ -38,7 +38,7 @@ int		check_map_player_position(t_map *map)
 void	check_for_forbidden_characters(t_map *map)
 {
 	int		i;
-	
+
 	i = 0;
 	while(map->map[i])
 	{
@@ -50,6 +50,7 @@ void	check_for_forbidden_characters(t_map *map)
 
 void	check_file_conformity(t_map *map)
 {
+	checkAllFieldsArePresent(map);
 	check_texture_conformity(map);
 	check_resolution_conformity(map);
 	check_map_right_left_conformity(map);
