@@ -46,6 +46,7 @@ void	parse_resolution(char *raw_map, t_map *map)
 	if (!resolutions)
 		print_error("Resolutions field not found.");
 
+	check_if_resolution_is_ok(resolutions);
 	splitted_resolutions = ft_split(resolutions, ' ');
 	check_splitted_fields(splitted_resolutions, 2);
 	map->resolution.height = ft_atoi(splitted_resolutions[1]);

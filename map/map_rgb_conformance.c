@@ -80,17 +80,14 @@ void	check_all_fields_are_present(t_map *map)
 	char	*line;
 	int		correct_fields;
 
-
 	fd = open(map->map_file, O_RDONLY);
 	i = 0;
 	j = 0;
 	correct_fields = 0;
 	while (get_next_line(fd, &line) == 1)
 	{
-		// printf("%s", line);
 		if (check_if_first_parameter_is_allowed(line) == ft_true)
 			correct_fields++;
-
 		free(line);
 	}
 	close(fd);

@@ -68,6 +68,10 @@ int		is_map_beggining(char *line);
 /*  M A P   S P A C E D   M A T R I X */
 void	parse_spaced_map(t_map *map);
 
+
+/*  M A P   B A C K	  S P A C I N G */
+void	check_if_resolution_is_ok(char *line);
+
 /*  M A P   C O N F O R M I N G */
 void	check_file_conformity(t_map *map);
 

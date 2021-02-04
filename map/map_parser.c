@@ -12,19 +12,19 @@
  1. Gets the begining of the string and stores the result in partial_string.
  2. Copies in final_string the whole line until it reaches a new line character.
  3. Returns either the cutted line or null if field not found.
- 
+
  */
 
 char	*parse_character(char *raw_map, char *chosen_field)
 {
 	char	*partial_string;
-	
+
 	partial_string = ft_strstr(raw_map, chosen_field);
 	if (ft_split(partial_string, '\n') != NULL)
 		return ft_split(partial_string, '\n')[0];
 	else
 		return NULL;
-	
+
 }
 
 void initialize_map_values(t_map *map)
@@ -50,7 +50,7 @@ int map_has_spaces(t_map *map)
 	int		fd;
 	int		spaces;
 	char	*line;
-	
+
 	fd = open(map->map_file, O_RDONLY);
 	i = 0;
 	spaces = 0;
@@ -65,7 +65,7 @@ int map_has_spaces(t_map *map)
 					spaces++;
 				i++;
 			}
-				
+
 		}
 		free(line);
 	}
@@ -78,7 +78,6 @@ int map_has_spaces(t_map *map)
 void	parse_cube_map(char *raw_map, t_map *map)
 {
 	initialize_map_values(map);
-	
 	parse_resolution(raw_map, map);
 	parse_north_texture(raw_map, map);
 	parse_south_texture(raw_map, map);
@@ -87,10 +86,5 @@ void	parse_cube_map(char *raw_map, t_map *map)
 	parse_sprite_texture(raw_map, map);
 	parse_floor_color(raw_map, map);
 	parse_ceiling_color(raw_map, map);
-	
-	if (map_has_spaces(map))
-		parse_spaced_map(map);
-	else
-		parse_map(map);
-	
+	map_has_spaces(map) ? parse_spaced_map(map) : parse_map(map);
 }

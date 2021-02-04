@@ -11,6 +11,7 @@ SRCS			=	map/map_conforming.c \
 					map/map_parser.c \
 					map/map_converting_map.c \
 					map/map_rgb_conformance.c \
+					map/back_spaces_conformance.c \
 					helpers/print_matrix.c \
 					helpers/square.c \
 					errors/errorManager.c \
