@@ -64,7 +64,7 @@ void	parse_floor_color(char *raw_map, t_map *map)
 		print_error("floor color field not found.");
 	if (ft_number_of_occurrences(floor_line, ',') > 2)
 		print_error("Two many commas in Floor field");
-
+	check_if_floor_ceiling_is_ok(floor_line);
 	splitted_floor_line = ft_split(floor_line, ' ');
 	splitted_floor_colors = ft_split(splitted_floor_line[1], ',');
 	check_splitted_fields(splitted_floor_colors, 3);
