@@ -59,7 +59,7 @@ void	parse_ceiling_color(char *raw_map, t_map *map);
 /*  M A P   R G B   C O N F O R M A N C E */
 void	does_rgb_color_contain_alpha(char **splitted_fields);
 void	is_rgb_color_number_offlimits(char **splitted_fields);
-void	checkAllFieldsArePresent(t_map *map);
+void	check_all_fields_are_present(t_map *map);
 
 /*  M A P   M A T R I X */
 void	parse_map(t_map *map);

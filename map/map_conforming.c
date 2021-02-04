@@ -50,7 +50,7 @@ void	check_for_forbidden_characters(t_map *map)
 
 void	check_file_conformity(t_map *map)
 {
-	checkAllFieldsArePresent(map);
+	check_all_fields_are_present(map);
 	check_texture_conformity(map);
 	check_resolution_conformity(map);
 	check_map_right_left_conformity(map);
