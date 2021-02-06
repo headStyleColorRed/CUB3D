@@ -84,7 +84,7 @@ void	parse_ceiling_color(char *raw_map, t_map *map)
 		print_error("ceiling color field not found.");
 	if (ft_number_of_occurrences(ceiling_line, ',') > 2)
 		print_error("Two many commas in Ceiling field");
-
+	check_if_floor_ceiling_is_ok(ceiling_line);
 	splitted_ceiling_line = ft_split(ceiling_line, ' ');
 	splitted_ceiling_colors = ft_split(splitted_ceiling_line[1], ',');
 	check_splitted_fields(splitted_ceiling_colors, 3);
