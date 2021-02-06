@@ -72,6 +72,7 @@ void	parse_spaced_map(t_map *map);
 /*  M A P   B A C K	  S P A C I N G */
 void	check_if_resolution_is_ok(char *line);
 void	check_if_floor_ceiling_is_ok(char *line);
+void	check_wall_textures_are_ok(char * line, t_map_parser orientation);
 
 /*  M A P   C O N F O R M I N G */
 void	check_file_conformity(t_map *map);

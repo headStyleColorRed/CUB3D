@@ -16,7 +16,7 @@ void	parse_north_texture(char *raw_map, t_map *map)
 	texture = parse_character(raw_map, map_textures(NORTH));
 	if (!texture)
 		print_error("North texture field not found.");
-
+	check_wall_textures_are_ok(texture, NORTH);
 	splitted_texture = ft_split(texture, ' ');
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("North texture file doesn't exist");
@@ -31,7 +31,7 @@ void	parse_south_texture(char *raw_map, t_map *map)
 	texture = parse_character(raw_map, map_textures(SOUTH));
 	if (!texture)
 		print_error("south texture field not found.");
-
+	check_wall_textures_are_ok(texture, SOUTH);
 	splitted_texture = ft_split(texture, ' ');
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("South texture file doesn't exist");
@@ -46,7 +46,7 @@ void	parse_east_texture(char *raw_map, t_map *map)
 	texture = parse_character(raw_map, map_textures(EAST));
 	if (!texture)
 		print_error("east texture field not found.");
-
+	check_wall_textures_are_ok(texture, EAST);
 	splitted_texture = ft_split(texture, ' ');
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("East texture file doesn't exist");
@@ -61,7 +61,7 @@ void	parse_west_texture(char *raw_map, t_map *map)
 	texture = parse_character(raw_map, map_textures(WEST));
 	if (!texture)
 		print_error("west texture field not found.");
-
+	check_wall_textures_are_ok(texture, WEST);
 	splitted_texture = ft_split(texture, ' ');
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("West texture file doesn't exist");
@@ -76,7 +76,7 @@ void	parse_sprite_texture(char *raw_map, t_map *map)
 	texture = parse_character(raw_map, map_textures(SPRITE));
 	if (!texture)
 		print_error("sprite texture field not found.");
-
+	check_wall_textures_are_ok(texture, SPRITE);
 	splitted_texture = ft_split(texture, ' ');
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("Sprite texture file doesn't exist");

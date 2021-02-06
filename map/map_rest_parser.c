@@ -8,7 +8,7 @@
 			3. It saves the texture in the map struct
  */
 
-int	ft_number_of_occurrences(const char *string, const char character)
+int		ft_number_of_occurrences(const char *string, const char character)
 {
 	int repetitions;
 	int i;
