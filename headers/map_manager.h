@@ -9,6 +9,11 @@
 #ifndef map_manager_h
 #define map_manager_h
 
+# define MIN_SCREEN_HEIGHT 100
+# define MAX_SCREEN_HEIGHT 1440
+# define MIN_SCREEN_WIDTH 100
+# define MAX_SCREEN_WIDTH 2560
+
 typedef enum e_map_parser
 {
 	NORTH,

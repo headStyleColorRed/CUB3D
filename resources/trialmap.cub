@@ -1,9 +1,9 @@
-R 100 720
-WE ../textures/greystone.xpm
+R 0 4294967299
+NO ./textures/greystone.xpm
 SO ./textures/redbrick.xpm
 EA ./textures/wood.xpm
-NO ./textures/wood.xpm
-S ./textures/barrel.xpm
+WE ./textures/wood.xpm
+S ./textures/miguelito.xpm
 C 255,200,160
 F 122,122,122
 

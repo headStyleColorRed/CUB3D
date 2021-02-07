@@ -57,6 +57,8 @@ void	check_wall_textures_are_ok(char * line, t_map_parser orientation)
 	int i;
 
 	i = 2;
+	while(line[i] == ' ')
+		i++;
 	while (line[i++] != '\0')
 		if (line[i] == ' ' && line[i - 1] != '\\')
 			wall_textures_checker_error(" texture has forbidden spaces on it's string", orientation);

@@ -16,8 +16,15 @@ void	check_texture_conformity(t_map *map)
 
 void	check_resolution_conformity(t_map *map)
 {
-	if (map->resolution.height <= 0 || map->resolution.width <= 0)
-		print_error("Either one of the resolutions was 0");
+	if (map->resolution.height < MIN_SCREEN_HEIGHT )
+		print_error("Screen height resolution is less than 100");
+	if (map->resolution.height > MAX_SCREEN_HEIGHT)
+		print_error("Screen height resolution is greater than 1440");
+	if (map->resolution.width < MIN_SCREEN_HEIGHT )
+		print_error("Screen width resolution is less than 100");
+	if (map->resolution.width > MAX_SCREEN_WIDTH)
+		print_error("Screen width resolution is greater than 2560");
+
 }
 
 int		check_map_player_position(t_map *map)
