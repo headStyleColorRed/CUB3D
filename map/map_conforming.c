@@ -35,6 +35,23 @@ int		check_map_player_position(t_map *map)
 	return (0);
 }
 
+void	check_only_one_player_position(t_map *map)
+{
+	int		i;
+	int		player_position;
+
+	i = 0;
+	player_position = 0;
+	while(map->map[i])
+	{
+		if (ft_check_if_character(map->map[i], "NSWE"))
+			player_position++;
+		i++;
+	}
+	if (player_position > 1)
+		print_error("More than one player position found");
+}
+
 void	check_for_forbidden_characters(t_map *map)
 {
 	int		i;
@@ -58,4 +75,5 @@ void	check_file_conformity(t_map *map)
 	check_map_bottom_conformity(map);
 	check_map_player_position(map);
 	check_for_forbidden_characters(map);
+	check_only_one_player_position(map);
 }
