@@ -78,8 +78,7 @@ void	check_file_conformity(t_map *map)
 	check_texture_conformity(map);
 	check_resolution_conformity(map);
 	check_map_right_left_conformity(map);
-	check_map_top_conformity(map);
-	check_map_bottom_conformity(map);
+	check_map_top_bottom_conformity(map);
 	check_map_player_position(map);
 	check_for_forbidden_characters(map);
 	check_only_one_player_position(map);

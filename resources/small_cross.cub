@@ -1,0 +1,25 @@
+R 400 400
+F 100,100,100
+C 0,0,1
+
+NO ./textures/greystone.xpm
+SO ./textures/redbrick.xpm
+EA ./textures/wood.xpm
+WE ./textures/wood.xpm
+S ./textures/miguelito.xpm
+
+                                                                                                                                                                                                                                                        111
+                                                                                                                                                                                                                                                        121
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                          111111112000000000000000N000000000000000000000211111111
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        101
+                                                                                                                                                                                                                                                        121
+                                                                                                                                                                                                                                                        111

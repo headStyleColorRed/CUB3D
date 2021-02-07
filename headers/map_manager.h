@@ -84,8 +84,9 @@ void	check_file_conformity(t_map *map);
 
 /*  M A P   C O N F O R M I N G	   M A P */
 void	check_map_right_left_conformity(t_map *map);
-void	check_map_top_conformity(t_map *map);
-void	check_map_bottom_conformity(t_map *map);
+void	check_map_top_bottom_conformity(t_map *map);
+// void	check_map_top_conformity(t_map *map);
+// void	check_map_bottom_conformity(t_map *map);
 
 /*  M A P   C O N V E R T I N G */
 void	transform_file_to_matrix(t_map *map);
