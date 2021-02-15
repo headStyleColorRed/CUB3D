@@ -21,6 +21,7 @@ void	parse_north_texture(char *raw_map, t_map *map)
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("North texture file doesn't exist");
 	map->map_textures.NO_texture = splitted_texture[1];
+	free(texture);
 }
 
 void	parse_south_texture(char *raw_map, t_map *map)
@@ -36,6 +37,7 @@ void	parse_south_texture(char *raw_map, t_map *map)
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("South texture file doesn't exist");
 	map->map_textures.SO_texture = splitted_texture[1];
+	free(texture);
 }
 
 void	parse_east_texture(char *raw_map, t_map *map)
@@ -51,6 +53,7 @@ void	parse_east_texture(char *raw_map, t_map *map)
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("East texture file doesn't exist");
 	map->map_textures.EA_texture = splitted_texture[1];
+	free(texture);
 }
 
 void	parse_west_texture(char *raw_map, t_map *map)
@@ -66,6 +69,7 @@ void	parse_west_texture(char *raw_map, t_map *map)
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("West texture file doesn't exist");
 	map->map_textures.WE_texture = splitted_texture[1];
+	free(texture);
 }
 
 void	parse_sprite_texture(char *raw_map, t_map *map)
@@ -81,4 +85,5 @@ void	parse_sprite_texture(char *raw_map, t_map *map)
 	if ((open(splitted_texture[1], O_RDONLY)) < 0)
 		print_error("Sprite texture file doesn't exist");
 	map->map_textures.SP_texture = splitted_texture[1];
+	free(texture);
 }

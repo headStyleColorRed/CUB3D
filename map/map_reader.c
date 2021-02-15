@@ -54,6 +54,7 @@ void	process_file(char *map_file, t_map *map)
 	raw_map = read_map(map);
 
 	parse_cube_map(raw_map, map);
+	free(raw_map);
 	check_file_conformity(map);
 	transform_file_to_matrix(map);
 }

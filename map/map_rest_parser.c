@@ -51,6 +51,7 @@ void	parse_resolution(char *raw_map, t_map *map)
 	check_splitted_fields(splitted_resolutions, 2);
 	map->resolution.height = ft_atoi(splitted_resolutions[1]);
 	map->resolution.width = ft_atoi(splitted_resolutions[2]);
+	free(resolutions);
 }
 
 void	parse_floor_color(char *raw_map, t_map *map)
@@ -71,6 +72,8 @@ void	parse_floor_color(char *raw_map, t_map *map)
 	map->floor_color.r_color = ft_atoi(splitted_floor_colors[0]);
 	map->floor_color.g_color = ft_atoi(splitted_floor_colors[1]);
 	map->floor_color.b_color = ft_atoi(splitted_floor_colors[2]);
+	free(floor_line);
+	free(splitted_floor_line);
 }
 
 void	parse_ceiling_color(char *raw_map, t_map *map)
@@ -91,6 +94,8 @@ void	parse_ceiling_color(char *raw_map, t_map *map)
 	map->ceiling_color.r_color = ft_atoi(splitted_ceiling_colors[0]);
 	map->ceiling_color.g_color = ft_atoi(splitted_ceiling_colors[1]);
 	map->ceiling_color.b_color = ft_atoi(splitted_ceiling_colors[2]);
+	free(ceiling_line);
+	free(splitted_ceiling_line);
 }
 
 

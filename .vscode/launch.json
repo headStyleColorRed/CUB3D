@@ -10,7 +10,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/cub3D",
             "args": [
-				"resources/trialmap.cub"
+				"resources/big_cross.cub"
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",

@@ -42,7 +42,7 @@ char				*ft_strnstr(const char *big, const char *lit, size_t len);
 int					ft_atoi(const char *str);
 void				*ft_calloc(size_t nitems, size_t size);
 char				*ft_strdup(const char *src);
-char				*ft_strstr(const char *str, const char *to_find);
+char				*ft_strstr(char *str, char *to_find);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *str1, char const *str2);
 char				*ft_strtrim(char const *s1, char const *set);
