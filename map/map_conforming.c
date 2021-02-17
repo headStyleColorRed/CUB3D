@@ -24,7 +24,6 @@ void	check_resolution_conformity(t_map *map)
 		print_error("Screen width resolution is less than 100");
 	if (map->resolution.width > MAX_SCREEN_WIDTH)
 		print_error("Screen width resolution is greater than 2560");
-
 }
 
 int		check_map_player_position(t_map *map)

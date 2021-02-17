@@ -45,7 +45,6 @@ void	parse_resolution(char *raw_map, t_map *map)
 	resolutions = parse_character(raw_map, map_textures(RESOLUTION));
 	if (!resolutions)
 		print_error("Resolutions field not found.");
-
 	check_if_resolution_is_ok(resolutions);
 	splitted_resolutions = ft_split(resolutions, ' ');
 	check_splitted_fields(splitted_resolutions, 2);

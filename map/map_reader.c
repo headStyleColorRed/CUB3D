@@ -50,9 +50,7 @@ void	process_file(char *map_file, t_map *map)
 
 	check_map_is_dot_cub(map_file);
 	map->map_file = map_file;
-
 	raw_map = read_map(map);
-
 	parse_cube_map(raw_map, map);
 	check_file_conformity(map);
 	transform_file_to_matrix(map);

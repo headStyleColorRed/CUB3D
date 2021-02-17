@@ -40,7 +40,6 @@ t_bool	is_valid_parameter(char *param)
 	isValid = ft_false;
 	if (ft_strlen(param) > 2)
 		print_error("Parameter is longer than 2 characters");
-
 	if (ft_strlen(param) == 1)
 		if (ft_strncmp(param, "R", 1 )== 0 || ft_strncmp(param, "S", 1 )== 0 ||
 			ft_strncmp(param, "C", 1 )== 0 || ft_strncmp(param, "F", 1 )== 0 )

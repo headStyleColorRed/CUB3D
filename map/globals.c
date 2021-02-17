@@ -10,7 +10,6 @@
 
 char	*map_textures(t_map_parser chosenMap)
 {
-
 	if(chosenMap == NORTH)
 		return "NO";
 	else if (chosenMap == SOUTH)

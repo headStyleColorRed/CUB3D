@@ -40,7 +40,6 @@ void	transform_file_to_matrix(t_map *map)
 
 char	*map_textures(t_map_parser chosenMap)
 {
-
 	if(chosenMap == NORTH)
 		return "NO";
 	else if (chosenMap == SOUTH)

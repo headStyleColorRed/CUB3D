@@ -24,7 +24,6 @@ char	*parse_character(char *raw_map, char *chosen_field)
 		return ft_split(partial_string, '\n')[0];
 	else
 		return NULL;
-
 }
 
 void initialize_map_values(t_map *map)

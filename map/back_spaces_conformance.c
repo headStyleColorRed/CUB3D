@@ -15,7 +15,6 @@ void	check_if_resolution_is_ok(char *line)
 		i++;
 	while (line[i] != '\0' && ft_isalnum(line[i]) == 1)
 		i++;
-
 	if(line[i] != '\0')
 		print_error("Resolution map line has invalid characters at line's end");
 }
@@ -31,7 +30,6 @@ void	check_if_floor_ceiling_is_ok(char *line)
 		print_error("Floor/Ceiling field has no space after parameter");
 	while (line[i] != '\0' && (ft_isalnum(line[i]) == 1 || line[i] == ','))
 		i++;
-
 	if(line[i] != '\0')
 		print_error("Floor/Ceiling map line has invalid characters at line's end");
 }
@@ -62,7 +60,6 @@ void	check_wall_textures_are_ok(char * line, t_map_parser orientation)
 	while (line[i++] != '\0')
 		if (line[i] == ' ' && line[i - 1] != '\\')
 			wall_textures_checker_error(" texture has forbidden spaces on it's string", orientation);
-
 	i = ft_strlen(line) - 1;
 	if (line[i] != 'm' && line[i - 1] != 'p' && line[i - 2] != 'x')
 		wall_textures_checker_error("texture ending doesn't have valid characters xpm", orientation);
