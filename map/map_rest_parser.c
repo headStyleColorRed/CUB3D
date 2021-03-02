@@ -92,5 +92,13 @@ void	parse_ceiling_color(char *raw_map, t_map *map)
 	map->ceiling_color.b_color = ft_atoi(splitted_ceiling_colors[2]);
 }
 
+void	check_map_is_last_field(t_map *map)
+{
+	int		i;
+
+	i = ft_strlen(map->map) - 1;
 
 
+		if (map->map[i] != '1')
+			print_error("Map ending is not correct");
+}

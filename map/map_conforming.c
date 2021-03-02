@@ -81,4 +81,5 @@ void	check_file_conformity(t_map *map)
 	check_map_player_position(map);
 	check_for_forbidden_characters(map);
 	check_only_one_player_position(map);
+	check_map_is_last_field(map);
 }

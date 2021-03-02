@@ -82,6 +82,8 @@ void	check_wall_textures_are_ok(char * line, t_map_parser orientation);
 /*  M A P   C O N F O R M I N G */
 void	check_file_conformity(t_map *map);
 
+void	check_map_is_last_field(t_map *map);
+
 /*  M A P   C O N F O R M I N G	   M A P */
 void	check_map_right_left_conformity(t_map *map);
 void	check_map_top_bottom_conformity(t_map *map);
